@@ -2,7 +2,6 @@
 #include "Enemy.h"
 
 sHitRect hitrect;
-
 sHitRect enemyHit;                          // プレイヤー当たり判定
 sHitRect enemyFootCollider;                 // 接地コライダー
 sHitRect enemyHeadCollider;                 // 頭上コライダー
@@ -12,17 +11,14 @@ void Enemy::Init()
 {
 	// エネミーのグラフィックをメモリにロード＆表示座標を初期化
 	
-	graph = LoadGraph("data/Zonbi1.png");
+	graph = LoadGraph("data/Zonbi3.png");
 	damageGraph = LoadGraph("data/Zonbi.png");
 	GraphFilter(damageGraph, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 	
-	life = ENEMY_LIFE;
-	//x = 900;
-	//y = 500;
-	x = GetRand(ENEMY_MAXX);
-	y = GetRand(ENEMY_MAXY);
-	
+	life = ENEMY_LIFE;				//敵の体力
 
+	x = GetRand(ENEMY_MAXX);		//敵のX座標
+	y = GetRand(ENEMY_MAXY);		//敵のY座標
 	
 	// 当たり判定初期化
 	initRect(enemyHit, hitSizeX, hitSizeY);
@@ -31,8 +27,6 @@ void Enemy::Init()
 
 	// エネミーのグラフィックのサイズを得る
 	GetGraphSize(graph, &w, &h);
-	
-	
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
@@ -44,8 +38,6 @@ void Enemy::Init()
 	hitHead = false;
 	Reverse = false;
 	LivCounter = 0;
-
-	
 
 	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
 	damageFlag = false;	
@@ -154,21 +146,6 @@ void Enemy::Update(Player player,float deltaTime)
 		player.OnHitEnemy(x, y, w, h);
 	}
 
-	//エネミー複数表示
-	if (!LivFlag)
-	{
-		if (LivCounter < ENEMY_NUM)
-		{
-			for (int i = 0; i < ENEMY_NUM; i++)
-			{
-				 x = GetRand(ENEMY_MAXX);
-				 y = GetRand(ENEMY_MAXY);
-				LivCounter++;
-			}
-		}
-	}
-	
-	
 	// 当たり判定位置更新
 	updateWorldRect(enemyHit, x, y);
 	updateWorldRect(enemyFootCollider, x + colliderOffset / 2, y + enemyHit.h);
@@ -178,6 +155,7 @@ void Enemy::Update(Player player,float deltaTime)
 // 描画.
 void Enemy::Draw()
 {
+
 	if (life > 0)
 	{
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
