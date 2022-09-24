@@ -170,7 +170,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                 }
             }
             //ゲームオーバー条件
-            if (player.GetHitPoint() <= 0 || character.IsTimeLimitFlag() >= 6000000)
+            if (player.GetHitPoint() <= 0 || GetNowHiPerformanceCount() - character.IsTimeLimit() < GetNowHiPerformanceCount())
             {
                 GameSituation = OVER;
             }

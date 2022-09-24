@@ -86,7 +86,6 @@ void Enemy::Update(Player player,float deltaTime)
 		}
 		// ínè„â¡ë¨ìx
 		vx += -moveAccell * deltaTime;
-
 	}
 	else
 	{

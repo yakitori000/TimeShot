@@ -26,8 +26,9 @@ void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTim
     //DrawString(420, 80, buf, GetColor(255, 255, 255), FontHandle);
 
     //制限時間表示
-    TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
+    TimeDiff = int(TimeLimit + GetNowHiPerformanceCount());
     DrawFormatString(500, 80, GetColor(255, 255, 255), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
+
 
     //プレイヤーが宝箱に当たったら...
     if (item.HitFlag)

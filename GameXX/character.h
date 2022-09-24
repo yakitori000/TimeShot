@@ -30,6 +30,6 @@ public:
     void GameCLEAR();
     void GameOVER();
 
-    bool IsTimeLimitFlag() { return TimeDiff; }
+    bool IsTimeLimit() { return TimeDiff; }
     
 };
