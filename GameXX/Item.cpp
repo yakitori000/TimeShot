@@ -1,0 +1,73 @@
+#include "Item.h"
+
+void Item::Init()
+{
+	BoxGraph = LoadGraph("data/box.png");
+	OpenBoxGraph = LoadGraph("data/OpenBox.png");
+	Graph = LoadGraph("dat/now.png");
+	DropGraph = LoadGraph("data/dropShot.png");
+	
+
+	x = 880;
+	y = 158;
+	dropX = x - 50;
+	dropY = 500;
+
+	OpenFlag = false;
+	HitFlag = false;
+
+	int boxW, boxH;
+	GetGraphSize(BoxGraph, &boxW, &boxH);
+	w = boxW;
+	h = boxH;
+
+	ItemNowType = Graph;     // アイテム種類
+}
+
+void Item::Updata(Player& player)
+{
+	// 箱のあたり判定
+		// 空でない箱の場合のみ次の処理に移る
+	if (!OpenFlag)
+	{
+		// プレイヤーとの当たり判定
+		if (((x > player.px && x < player.px + player.w) ||
+			(player.px > x && player.px < x + w)) &&
+			((y > player.py && y < player.py + player.h) ||
+				(player.py > y && player.py < y + h)))
+		{
+			// 接触している場合獲得出来るようにする
+			player.GetFlag = true;
+			HitFlag = true;
+			ItemNowType = DropGraph;
+		}
+		else
+		{
+			HitFlag = false;
+		}
+	}
+	if (OpenFlag) 
+	{
+		HitFlag = false;
+		if (player.animGetDown == false)
+		{
+			ItemNowType = Graph;
+		}
+	}
+}
+
+void Item::Draw()
+{
+	if (OpenFlag == true)
+	{
+		DrawGraph(x, y, OpenBoxGraph, TRUE);
+		DrawGraph(dropX, dropY, Graph, TRUE);
+	}
+	else
+	{
+		DrawGraph(x, y, BoxGraph, TRUE);
+	}
+	
+}
+
+
