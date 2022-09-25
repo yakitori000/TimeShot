@@ -11,8 +11,8 @@ void Enemy::Init()
 {
 	// エネミーのグラフィックをメモリにロード＆表示座標を初期化
 	
-	graph = LoadGraph("data/Zonbi3.png");
-	damageGraph = LoadGraph("data/Zonbi.png");
+	graph = LoadGraph("data/image/Zonbi3.png");
+	damageGraph = LoadGraph("data/image/Zonbi.png");
 	GraphFilter(damageGraph, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 	
 	life = ENEMY_LIFE;				//敵の体力

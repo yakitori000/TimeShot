@@ -2,10 +2,10 @@
 
 void Item::Init()
 {
-	BoxGraph = LoadGraph("data/box.png");
-	OpenBoxGraph = LoadGraph("data/OpenBox.png");
-	Graph = LoadGraph("dat/now.png");
-	DropGraph = LoadGraph("data/dropShot.png");
+	BoxGraph = LoadGraph("data/image/box.png");
+	OpenBoxGraph = LoadGraph("data/image/OpenBox.png");
+	Graph = LoadGraph("dat/image/now.png");
+	DropGraph = LoadGraph("data/image/dropShot.png");
 	
 
 	x = 880;

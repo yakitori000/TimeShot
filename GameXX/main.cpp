@@ -10,6 +10,7 @@
 #include "function.h"
 #include "GameSituation.h"
 #include "ScreenImage.h"
+#include "Music.h"
 #include "ScrollManager.h"
 #pragma warning(disable:4996)
 
@@ -34,25 +35,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Character character;
     ScreenImage image;
     Scroll scroll;
+    Music music;
 
     // 初期化
     image.InitTitle();
     image.InitClear();
     image.InitOver();
+    music.Init();
+    music.ShotSoudInit();
     player.Init();
-    
     for (int i = 0; i < ENEMY_NUM; i++)
     {
         enemy[i].Init();
     }
-    
     map.Init();
     item.Init();
-
     for (int i = 0; i < SHOT; i++)
     {
         shot[i].Init();
     }
+
     GameSituation = TITLE;
 
     int nowCount, prevCount;
@@ -66,8 +68,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         case TITLE:
             ClearDrawScreen();
 
+            //PlaySoundMem(TitleMusic, DX_PLAYTYPE_BACK,FALSE);
+            music.playTitleSound();
+
             image.DrawTitle();
-            if (CheckHitKey(KEY_INPUT_SPACE))
+            if (CheckHitKey(KEY_INPUT_RETURN))
             {
                 GameSituation = PLAY;
             }
@@ -81,17 +86,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            float deltaTime;
            nowCount = GetNowCount();
            deltaTime = (nowCount - prevCount) / 1000.0f;
-
+           
+           music.playBGM();
+            
            //更新処理 1201fps想定
-           player.Update(shot, SHOT, item, 1.0f / 60.0f);
+           player.Update(shot, SHOT, item, music, 1.0f / 60.0f);
            for (int i = 0; i < ENEMY_NUM; i++)
            {
+               
                enemy[i].Update(player, 1.0f / 60.0f);
            }
           
            item.Updata(player);
            for (int i = 0; i < SHOT; i++)
            {
+              // music.playShot(player.count);
                for (int j = 0; j < ENEMY_NUM; j++)
                {
                    shot[i].Update(player, enemy[j]);
@@ -120,8 +129,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                for (int i = 0; i < ENEMY_NUM; i++)
                {
                    enemy[i].fixColPosition(enemyRect);
-               }
-               
+               }           
            }
 
            // 足元チェック
@@ -172,6 +180,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                character.display(player, enemy[i], item, 1.0f / 60.0f); //文字、時間表示
            }
+
+         
+           
            
            //ゲームクリア条件
             for (int i = 0; i < ENEMY_NUM; i++)

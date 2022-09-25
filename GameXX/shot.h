@@ -24,7 +24,9 @@ private:
 	int h;
 	int dx;
 	int dy;
+
 	bool visibleFlag;
+
 public:
 	/// <summary>
 	/// ƒvƒŒƒCƒ„[’e‰Šú‰»

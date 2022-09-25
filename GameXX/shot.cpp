@@ -6,7 +6,7 @@ void Shot::Init()
 {
 	// ƒVƒ‡ƒbƒg‚Ì‘¶İ‚ğ‰Šú‰»‚·‚é
 	int shotGraph;
-	shotGraph = LoadGraph("data/SuperShot.png");
+	shotGraph = LoadGraph("data/image/SuperShot.png");
 	graph = shotGraph;
 
 	//’e‚ª‰æ–Êã‚É‘¶İ‚µ‚Ä‚¢‚È‚¢

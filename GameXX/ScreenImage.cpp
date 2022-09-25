@@ -5,7 +5,7 @@
 //ゲームタイトル画像処理
 void ScreenImage::InitTitle()
 {
-	TITLEglaph = LoadGraph("data/title.png");
+	TITLEglaph = LoadGraph("data/image/title.png");
 	TITLEimageX = 0;
 	TITLEimageY = 0;
 }
@@ -19,7 +19,7 @@ void ScreenImage::DrawTitle()
 void ScreenImage::InitClear()
 {
 	
-	CLEARglaph = LoadGraph("data/win.png");
+	CLEARglaph = LoadGraph("data/image/win.png");
 	CLEARimageX = 0;
 	CLEARimageY = 0;
 }
@@ -33,7 +33,7 @@ void ScreenImage::DrawClear()
 //ゲームオーバー画像処理
 void ScreenImage::InitOver()
 {
-	OVERglaph = LoadGraph("data/lose.png");
+	OVERglaph = LoadGraph("data/image/lose.png");
 	OVERimageX = 0;
 	OVERimageY = 0;
 }

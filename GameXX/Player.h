@@ -3,10 +3,12 @@
 #include "shot.h"
 #include "Item.h"
 #include "map.h"
+#include "Music.h"
 #include "collision.h"
 
 class Shot;
 class Item;
+class Music;
 
 //プレイヤー
 class Player
@@ -72,7 +74,9 @@ public:
 	int graph;										// 画像サイズ
 	int ShotIntervalCount;							// 前フレームでショットされていたか
 
-
+	//効果音
+	int ShotSound;			//発射音
+	int OutBulletSound;		//弾切れ音
 
 	/// <summary>
 	/// プレイヤー初期化
@@ -83,7 +87,7 @@ public:
 	/// プレイヤー更新
 	/// </summary>
 	/// <param name="deltaTime">1フレーム分の処理時間</param>
-	void Update(Shot shot[], int shotnum, Item &item, float deltaTime);
+	void Update( Shot shot[], int shotnum, Item &item,Music &music, float deltaTime);
 
 	/// <summary>
 	/// プレイヤー描画
@@ -94,6 +98,8 @@ public:
 	/// プレイヤー後始末
 	/// </summary>
 	void Finalize();
+
+	void DrawShot(Shot shot);		//銃関連のサウンド再生
 
 	/// <summary>
 	/// プレイヤーの当たり判定矩形を返す

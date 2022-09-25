@@ -37,7 +37,7 @@ void Player::Init()
     initRect(playerHeadCollider, hitSizeX - colliderOffset, 1);
 
     // 横3 縦9 計27枚の画像ファイルの読み込み
-    graph = LoadDivGraph("data/chara7.png", animPatternNum * animTypeNum, animPatternNum, animTypeNum, imageSizeX, imageSizeY, playerImg);
+    graph = LoadDivGraph("data/image/chara7.png", animPatternNum * animTypeNum, animPatternNum, animTypeNum, imageSizeX, imageSizeY, playerImg);
 
     GetGraphSize(graph, &w, &h);
 
@@ -58,7 +58,7 @@ void Player::Init()
 
 }
 
-void Player::Update(Shot shot[],int shotnum ,Item& item, float deltaTime)
+void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float deltaTime)
 {
     bool isMove = inputMove(deltaTime);
 
@@ -110,6 +110,7 @@ void Player::Update(Shot shot[],int shotnum ,Item& item, float deltaTime)
         // 前フレームでショットボタンを押したかが保存されている変数がfalseだったら弾を発射
         if (!ShotIntervalCount)
         {
+            
             if (count > 0)
             {
                 // 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
@@ -118,14 +119,17 @@ void Player::Update(Shot shot[],int shotnum ,Item& item, float deltaTime)
                     // 弾iが画面上にでていない場合はその弾を画面に出す
                     if (shot[i].IsVisibleFlag() == 0)
                     {
+                       
                         shot[i].OnShot(px,py,w,h);
                         count -= 1;
+                        music.playShot();
                         // 一つ弾を出したので弾を出すループから抜けます
                         break;
                     }
                 }
             }
         }
+
             // インターバル用のカウンターを設定.
             ShotIntervalCount = SHOT_INTERVAL;
     }
