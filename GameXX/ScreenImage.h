@@ -3,6 +3,11 @@
 class ScreenImage
 {
 public:
+
+	//ゲームタイトル画像
+	int TITLEglaph;
+	int TITLEimageX, TITLEimageY;
+
 	//ゲームクリア画像
 	int CLEARglaph;
 	int CLEARimageX, CLEARimageY;
@@ -11,13 +16,15 @@ public:
 	int OVERglaph;
 	int OVERimageX, OVERimageY;
 
+	//ゲームタイトル画像関連
+	void InitTitle();
+	void DrawTitle();
+
 	//ゲームクリア画像関連
-	void LoadClear();
 	void InitClear();
 	void DrawClear();
 
 	//ゲームオーバー画像関連
-	void LoadOver();
 	void InitOver();
 	void DrawOver();
 

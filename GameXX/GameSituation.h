@@ -3,6 +3,7 @@
 int  GameSituation;
 enum
 {
+	TITLE,
 	PLAY,
 	CLEAR,
 	OVER

@@ -36,6 +36,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Scroll scroll;
 
     // 初期化
+    image.InitTitle();
     image.InitClear();
     image.InitOver();
     player.Init();
@@ -52,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     {
         shot[i].Init();
     }
-    GameSituation = PLAY;
+    GameSituation = TITLE;
 
     int nowCount, prevCount;
     nowCount = prevCount = GetNowCount();
@@ -62,6 +63,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     {
         switch (GameSituation)
         {
+        case TITLE:
+            ClearDrawScreen();
+
+            image.DrawTitle();
+            if (CheckHitKey(KEY_INPUT_SPACE))
+            {
+                GameSituation = PLAY;
+            }
+            ScreenFlip();
+            break;
+
         case PLAY:
            ClearDrawScreen();
 
@@ -170,7 +182,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                 }
             }
             //ゲームオーバー条件
-            if (player.GetHitPoint() <= 0 || GetNowHiPerformanceCount() - character.IsTimeLimit() < GetNowHiPerformanceCount())
+            if (player.GetHitPoint() <= 0 || GetNowHiPerformanceCount() - character.IsTimeLimit() > GetNowHiPerformanceCount())
             {
                 GameSituation = OVER;
             }

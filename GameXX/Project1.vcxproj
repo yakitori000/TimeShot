@@ -157,6 +157,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="ScreenImage.cpp" />
     <ClCompile Include="ScrollManager.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ScreenImage.h" />
     <ClInclude Include="ScrollManager.h" />
