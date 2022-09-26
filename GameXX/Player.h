@@ -99,8 +99,6 @@ public:
 	/// </summary>
 	void Finalize();
 
-	void DrawShot(Shot shot);		//銃関連のサウンド再生
-
 	/// <summary>
 	/// プレイヤーの当たり判定矩形を返す
 	/// </summary>

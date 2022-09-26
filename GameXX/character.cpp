@@ -6,7 +6,7 @@ void Character::Init()
 }
 void Character::Title()
 {
-    DrawStringToHandle(725, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
+    DrawStringToHandle(730, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
 }
 
 void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTime)

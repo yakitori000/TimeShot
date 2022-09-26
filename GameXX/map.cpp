@@ -330,7 +330,7 @@ void sMapLayer::Init()
 	// 画像総数  横枚数x縦枚数,横方向個数,縦方向個数,チップ1枚の横サイズ, チップ1毎の縦サイズ, 画像配列先頭ポインタ 
 	LoadDivGraph("data/image/HeadBrid tile.png", mapImgXNum * mapImgYNum, mapImgXNum, mapImgYNum, mapChipSize, mapChipSize, mapChipImg);
 
-	//マップ読み込み（レイヤーごとに）
+	//マップ読み込み
 	LayerLoader(layerHit, "data/map/NewGamehit2.csv");
 	//LayerLoader(layerBack, "dataisland_back.csv");
 	LayerLoader(layerBase, "data/map/NewGame02.csv");

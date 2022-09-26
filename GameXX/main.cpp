@@ -178,9 +178,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                enemy[i].Draw();
            }
            
+           //文字、時間表示
            for (int i = 0; i < ENEMY_NUM; i++)
            {
-               character.display(player, enemy[i], item, 1.0f / 60.0f); //文字、時間表示
+               character.display(player, enemy[i], item, 1.0f / 60.0f); 
            }
            
            //ゲームクリア条件
@@ -201,7 +202,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             
             break;
 
-        case CLEAR:                 //ゲームクリア処理
+            //ゲームクリア処理
+        case CLEAR:                 
             ClearDrawScreen();
 
             image.DrawClear();
@@ -213,8 +215,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             ScreenFlip();
             break;
 
-
-        case OVER:                  //ゲームオーバー処理
+            //ゲームオーバー処理
+        case OVER:                  
             ClearDrawScreen();
 
             image.DrawOver();

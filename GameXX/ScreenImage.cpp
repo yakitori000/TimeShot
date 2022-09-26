@@ -5,7 +5,7 @@
 //ゲームタイトル画像処理
 void ScreenImage::InitTitle()
 {
-	TITLEglaph = LoadGraph("data/image/title.png");
+	TITLEglaph = LoadGraph("data/image/title1.png");
 	TITLEimageX = 0;
 	TITLEimageY = 0;
 }
