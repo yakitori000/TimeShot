@@ -12,7 +12,7 @@ void Character::Title()
 void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTime)
 {
     /*TimeCount = int(TimeCount - GetNowHiPerformanceCount());*/
-    /*FontHandle = CreateFontToHandle(NULL, 40, 9);*/
+    FontHandle = CreateFontToHandle(NULL, 40, 9);
     
     //プレイヤーライフ表示
     sprintf(buf, "HP：%d", player.HitPoint);
