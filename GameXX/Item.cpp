@@ -7,16 +7,10 @@ void Item::Init(Music& music)
 	Graph = LoadGraph("dat/image/now.png");
 	DropGraph = LoadGraph("data/image/dropShot.png");
 	
-
-	x = 10;
-	y = 800;
-	dropX = x - 50;
-	dropY = 500;
-
-	/*x = 880;
+	x = 880;
 	y = 158;
 	dropX = x - 50;
-	dropY = 500;*/
+	dropY = 500;
 
 	OpenFlag = false;
 	HitFlag = false;
@@ -27,8 +21,6 @@ void Item::Init(Music& music)
 	h = boxH;
 
 	ItemNowType = Graph;     // ƒAƒCƒeƒ€Ží—Þ
-
-	music.BoxSoundInit();
 }
 
 void Item::Updata(Player& player, Music &music)

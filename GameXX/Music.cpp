@@ -5,20 +5,10 @@ void Music::Init()
 {
 	TitleMusic = LoadSoundMem("data/sound/GameMusic.mp3");
 	GameMusic = LoadSoundMem("data/sound/GameMusic.mp3");
-
-}
-
-void Music::ShotSoudInit()
-{
 	ShotSound = LoadSoundMem("data/sound/shot.mp3");
 	OutBulletSound = LoadSoundMem("data/sound/OutBullet.mp3");
-}
-
-void Music::BoxSoundInit()
-{
 	OpenSound = LoadSoundMem("data/sound/OpenBox.mp3");
 }
-
 
 void Music::playTitleSound()
 {

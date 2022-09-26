@@ -30,13 +30,6 @@ public:
 	void Init();						
 	
 	/// <summary>
-	///銃関連サウンド初期化
-	/// </summary>
-	void ShotSoudInit();
-
-	void BoxSoundInit();
-	
-	/// <summary>
 	///タイトルサウンド再生
 	/// </summary>
 	void playTitleSound();				

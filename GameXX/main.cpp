@@ -42,7 +42,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     image.InitClear();
     image.InitOver();
     music.Init();
-    music.ShotSoudInit();
     player.Init();
     character.Init();
     for (int i = 0; i < ENEMY_NUM; i++)
