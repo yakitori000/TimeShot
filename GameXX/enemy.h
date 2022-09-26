@@ -29,6 +29,8 @@ private:
 	float	vx, vy;
 	int		graph;
 
+	int num[ENEMY_NUM];
+
 
 	float PosX[ENEMY_NUM] = {};
 	float PosY[ENEMY_NUM] = {};

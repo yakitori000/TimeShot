@@ -50,7 +50,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         enemy[i].Init();
     }
     map.Init();
-    item.Init();
+    item.Init(music);
     for (int i = 0; i < SHOT; i++)
     {
         shot[i].Init();
@@ -100,7 +100,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                enemy[i].Update(player, 1.0f / 60.0f);
            }
           
-           item.Updata(player);
+           item.Updata(player, music);
            for (int i = 0; i < SHOT; i++)
            {
               // music.playShot(player.count);

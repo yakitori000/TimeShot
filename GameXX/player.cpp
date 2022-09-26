@@ -112,7 +112,7 @@ void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float delt
         // 前フレームでショットボタンを押したかが保存されている変数がfalseだったら弾を発射
         if (!ShotIntervalCount)
         {
-            
+            music.playShot(count);      //銃関連サウンド再生
             if (count > 0)
             {
                 // 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
@@ -124,7 +124,6 @@ void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float delt
                        
                         shot[i].OnShot(px,py,w,h);
                         count -= 1;
-                        music.playShot();
                         // 一つ弾を出したので弾を出すループから抜けます
                         break;
                     }
@@ -152,6 +151,7 @@ void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float delt
            count += 20;
            animNowType = animGetDown;
            item.OpenFlag = true;
+           music.playBox(item.OpenFlag);
         }  
     }
     if(CheckHitKey(KEY_INPUT_LEFT) || CheckHitKey(KEY_INPUT_RIGHT))

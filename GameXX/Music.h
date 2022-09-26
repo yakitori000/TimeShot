@@ -2,8 +2,10 @@
 
 #include "DxLib.h"
 #include "Player.h"
+#include "Item.h"
 
 class player;
+class Item;
 
 class Music
 {
@@ -20,6 +22,7 @@ public:
 	int OutBulletSound;		//弾切れ音
 	int ZonbiVoice;			//ゾンビ移動時
 	int ScreamZonbiSound;	//ゾンビ死亡時
+	int OpenSound;			//宝箱開けたときの音
 
 	/// <summary>
 	///サウンド初期化
@@ -30,6 +33,8 @@ public:
 	///銃関連サウンド初期化
 	/// </summary>
 	void ShotSoudInit();
+
+	void BoxSoundInit();
 	
 	/// <summary>
 	///タイトルサウンド再生
@@ -44,7 +49,12 @@ public:
 	/// <summary>
 	///銃関連のサウンド再生
 	/// </summary>
-	void playShot();
+	void playShot(int count);
+
+	/// <summary>
+	///宝箱関連のサウンド再生
+	/// </summary>
+	void playBox(bool OpenFlag);
 
 
 };

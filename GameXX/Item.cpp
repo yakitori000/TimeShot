@@ -1,6 +1,6 @@
 #include "Item.h"
 
-void Item::Init()
+void Item::Init(Music& music)
 {
 	BoxGraph = LoadGraph("data/image/box.png");
 	OpenBoxGraph = LoadGraph("data/image/OpenBox.png");
@@ -8,10 +8,15 @@ void Item::Init()
 	DropGraph = LoadGraph("data/image/dropShot.png");
 	
 
-	x = 880;
-	y = 158;
+	x = 10;
+	y = 800;
 	dropX = x - 50;
 	dropY = 500;
+
+	/*x = 880;
+	y = 158;
+	dropX = x - 50;
+	dropY = 500;*/
 
 	OpenFlag = false;
 	HitFlag = false;
@@ -22,9 +27,11 @@ void Item::Init()
 	h = boxH;
 
 	ItemNowType = Graph;     // ƒAƒCƒeƒ€í—Ş
+
+	music.BoxSoundInit();
 }
 
-void Item::Updata(Player& player)
+void Item::Updata(Player& player, Music &music)
 {
 	// ” ‚Ì‚ ‚½‚è”»’è
 		// ‹ó‚Å‚È‚¢” ‚Ìê‡‚Ì‚İŸ‚Ìˆ—‚ÉˆÚ‚é
@@ -49,11 +56,13 @@ void Item::Updata(Player& player)
 	if (OpenFlag) 
 	{
 		HitFlag = false;
+		
 		if (player.animGetDown == false)
 		{
 			ItemNowType = Graph;
 		}
 	}
+	
 }
 
 void Item::Draw()

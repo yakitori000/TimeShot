@@ -3,10 +3,12 @@
 
 #include "DxLib.h"
 #include "Player.h"
+#include "Music.h"
 #include "collision.h"
 #include "function.h"
 
 class Player;
+class Music;
 
 class Item
 {
@@ -28,9 +30,9 @@ public:
 	bool OpenFlag;
 	bool HitFlag;
 
-	void Init();
+	void Init(Music& music);
 
-	void Updata(Player& player);
+	void Updata(Player& player, Music &music);
 
 	void Draw();
 
