@@ -205,6 +205,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             ClearDrawScreen();
 
             image.DrawClear();
+            character.GameCLEAR();
             if (CheckHitKey(KEY_INPUT_ESCAPE))
             {
                 DxLib_End();
@@ -217,6 +218,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             ClearDrawScreen();
 
             image.DrawOver();
+            character.GameOVER();
             if (CheckHitKey(KEY_INPUT_ESCAPE))
             {
                 DxLib_End();

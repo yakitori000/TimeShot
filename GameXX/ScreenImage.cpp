@@ -19,7 +19,7 @@ void ScreenImage::DrawTitle()
 void ScreenImage::InitClear()
 {
 	
-	CLEARglaph = LoadGraph("data/image/win.png");
+	CLEARglaph = LoadGraph("data/image/win1.png");
 	CLEARimageX = 0;
 	CLEARimageY = 0;
 }

@@ -6,7 +6,7 @@ void Character::Init()
 }
 void Character::Title()
 {
-    DrawStringToHandle(720, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
+    DrawStringToHandle(725, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
 }
 
 void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTime)
@@ -55,12 +55,10 @@ void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTim
 
 void Character::GameCLEAR()
 {
-    sprintf(buf, "ESCAPEキーを押してください。");
-    DrawString(970, 540, buf, GetColor(255, 255, 255));
+    DrawStringToHandle(725, 550, "ENTAR to TITLE\n          or\nESCKEY to END", GetColor(255, 255, 255), FontHandle2);
 }
 
 void Character::GameOVER()
 {
-    sprintf(buf, "ESCAPEキーを押してください。");
-    DrawString(970, 540, buf, GetColor(255, 255, 255));
+    DrawStringToHandle(735, 550, "ENTAR to TITLE\n          or\nESCKEY to END", GetColor(255, 255, 255), FontHandle2);
 }
