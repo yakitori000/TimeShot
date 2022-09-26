@@ -1,5 +1,13 @@
 
 #include "character.h"
+void Character::Init()
+{
+    FontHandle2 = CreateFontToHandle("vermin vibes 1989", 40, 3);
+}
+void Character::Title()
+{
+    DrawStringToHandle(780, 900, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
+}
 
 void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTime)
 {

@@ -13,6 +13,7 @@ private:
     char buf[64];
     int NowCount;
     int FontHandle;
+    int FontHandle2;
     
     int nowCount = GetNowCount();
     int TimeCount = nowCount;
@@ -25,7 +26,8 @@ private:
 
 public:
 
-
+    void Init();
+    void Title();
     void display(Player& player, Enemy& enemy, Item& item, float deltaTime);
     void GameCLEAR();
     void GameOVER();

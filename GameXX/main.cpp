@@ -37,6 +37,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Scroll scroll;
     Music music;
 
+    LPCSTR font_path = "vermin_vibes.ttf"; // 読み込むフォントファイルのパス
+
     // 初期化
     image.InitTitle();
     image.InitClear();
@@ -44,6 +46,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     music.Init();
     music.ShotSoudInit();
     player.Init();
+    character.Init();
     for (int i = 0; i < ENEMY_NUM; i++)
     {
         enemy[i].Init();
@@ -68,10 +71,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         case TITLE:
             ClearDrawScreen();
 
-            //PlaySoundMem(TitleMusic, DX_PLAYTYPE_BACK,FALSE);
-            music.playTitleSound();
 
+            music.playTitleSound();
             image.DrawTitle();
+            character.Title();
+
             if (CheckHitKey(KEY_INPUT_RETURN))
             {
                 GameSituation = PLAY;
