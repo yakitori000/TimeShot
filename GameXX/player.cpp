@@ -100,11 +100,13 @@ void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float delt
         if (animNowType == animLeft && CheckHitKey(KEY_INPUT_LEFT) == false)
         {
             isMove = true;
+            sideFlag = true;
             animNowType = animStopShotLeft;
         }
         if (animNowType == animRight && CheckHitKey(KEY_INPUT_RIGHT) == false)
         {
             isMove = true;
+            sideFlag = false;
             animNowType = animStopShotRight;
         }
         // 前フレームでショットボタンを押したかが保存されている変数がfalseだったら弾を発射

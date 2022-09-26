@@ -76,6 +76,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
             if (CheckHitKey(KEY_INPUT_RETURN))
             {
+                StopSoundMem(music.TitleMusic);
                 GameSituation = PLAY;
             }
             ScreenFlip();
@@ -182,9 +183,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                character.display(player, enemy[i], item, 1.0f / 60.0f); //文字、時間表示
            }
-
-         
-           
            
            //ゲームクリア条件
             for (int i = 0; i < ENEMY_NUM; i++)
