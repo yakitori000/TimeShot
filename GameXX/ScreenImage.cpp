@@ -33,7 +33,7 @@ void ScreenImage::DrawClear()
 //ゲームオーバー画像処理
 void ScreenImage::InitOver()
 {
-	OVERglaph = LoadGraph("data/image/lose.png");
+	OVERglaph = LoadGraph("data/image/lose1.png");
 	OVERimageX = 0;
 	OVERimageY = 0;
 }

@@ -21,11 +21,30 @@ public:
 	int ZonbiVoice;			//ゾンビ移動時
 	int ScreamZonbiSound;	//ゾンビ死亡時
 
-	void Init();						//サウンド初期化
+	/// <summary>
+	///サウンド初期化
+	/// </summary>
+	void Init();						
+	
+	/// <summary>
+	///銃関連サウンド初期化
+	/// </summary>
 	void ShotSoudInit();
-	void playTitleSound();				//タイトルサウンド再生
-	void playBGM();						//ゲームBGM再生
-	void playShot();			//銃関連のサウンド再生
+	
+	/// <summary>
+	///タイトルサウンド再生
+	/// </summary>
+	void playTitleSound();				
+	
+	/// <summary>
+	///ゲームBGM再生
+	/// </summary>
+	void playBGM();						
+	
+	/// <summary>
+	///銃関連のサウンド再生
+	/// </summary>
+	void playShot();
 
 
 };

@@ -22,7 +22,7 @@ void Music::playTitleSound()
 
 void Music::playBGM()
 {
-	ChangeNextPlayVolumeSoundMem(120,GameMusic);
+	ChangeNextPlayVolumeSoundMem(90,GameMusic);
 	PlaySoundMem(GameMusic, DX_PLAYTYPE_BACK,FALSE);
 }
 

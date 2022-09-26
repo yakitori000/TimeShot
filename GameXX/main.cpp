@@ -37,8 +37,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Scroll scroll;
     Music music;
 
-    LPCSTR font_path = "vermin_vibes.ttf"; // 読み込むフォントファイルのパス
-
     // 初期化
     image.InitTitle();
     image.InitClear();
@@ -193,12 +191,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             {
                 if (enemy[i].GetLife() <= 0)
                 {
+                    StopSoundMem(music.GameMusic);
                     GameSituation = CLEAR;
                 }
             }
             //ゲームオーバー条件
             if (player.GetHitPoint() <= 0 || GetNowHiPerformanceCount() - character.IsTimeLimit() > GetNowHiPerformanceCount())
             {
+                StopSoundMem(music.GameMusic);
                 GameSituation = OVER;
             }
             
