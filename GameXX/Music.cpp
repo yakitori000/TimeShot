@@ -41,7 +41,7 @@ void Music::playBox(bool OpenFlag)
 {
 	if (OpenFlag)
 	{
-		PlaySoundMem(OpenSound, DX_PLAYTYPE_BACK, FALSE);
+		PlaySoundMem(OpenSound, DX_PLAYTYPE_BACK, TRUE);
 	}
 	
 	
