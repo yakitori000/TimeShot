@@ -5,40 +5,52 @@
 //ゲームタイトル画像処理
 void ScreenImage::InitTitle()
 {
-	TITLEglaph = LoadGraph("data/image/title.png");
+	TITLEgraph = LoadGraph("data/image/title2.png");
 	TITLEimageX = 0;
 	TITLEimageY = 0;
 }
 
 void ScreenImage::DrawTitle()
 {
-	DrawGraph(TITLEimageX, TITLEimageY, TITLEglaph, TRUE);
+	DrawGraph(TITLEimageX, TITLEimageY, TITLEgraph, TRUE);
+}
+
+void ScreenImage::InitMenu()
+{
+	MENUgraph = LoadGraph("data/image/KeyMenu1.png");
+	MENUimageX = 0;
+	MENUimageY = 0;
+}
+
+void ScreenImage::DrawMenu()
+{
+	DrawGraph(MENUimageX, MENUimageY, MENUgraph,TRUE);
 }
 
 //ゲームクリア画像処理
 void ScreenImage::InitClear()
 {
 	
-	CLEARglaph = LoadGraph("data/image/win.png");
+	CLEARgraph = LoadGraph("data/image/win.png");
 	CLEARimageX = 0;
 	CLEARimageY = 0;
 }
 
 void ScreenImage::DrawClear()
 {
-	DrawGraph(CLEARimageX, CLEARimageY, CLEARglaph, TRUE);
+	DrawGraph(CLEARimageX, CLEARimageY, CLEARgraph, TRUE);
 }
 
 
 //ゲームオーバー画像処理
 void ScreenImage::InitOver()
 {
-	OVERglaph = LoadGraph("data/image/lose.png");
+	OVERgraph = LoadGraph("data/image/lose.png");
 	OVERimageX = 0;
 	OVERimageY = 0;
 }
 
 void ScreenImage::DrawOver()
 {
-	DrawGraph(OVERimageX, OVERimageY, OVERglaph, TRUE);
+	DrawGraph(OVERimageX, OVERimageY, OVERgraph, TRUE);
 }

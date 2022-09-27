@@ -39,6 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     // èâä˙âª
     image.InitTitle();
+    image.InitMenu();
     image.InitClear();
     image.InitOver();
     music.Init();
@@ -68,10 +69,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         case TITLE:
             ClearDrawScreen();
 
-
             music.playTitleSound();
             image.DrawTitle();
             character.Title();
+
+            if (CheckHitKey(KEY_INPUT_Q))
+            {
+                GameSituation = MENU;
+            }
 
             if (CheckHitKey(KEY_INPUT_RETURN))
             {
@@ -79,6 +84,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                 GameSituation = PLAY;
             }
             ScreenFlip();
+            break;
+
+        case MENU:
+            ClearDrawScreen();
+            
+            image.DrawMenu();
+            if (CheckHitKey(KEY_INPUT_RETURN))
+            {
+                WaitTimer(1000);
+                GameSituation = TITLE;
+            }
             break;
 
         case PLAY:
