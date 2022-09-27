@@ -23,11 +23,11 @@ void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTim
     DrawString(180, 80, buf, GetColor(255, 255, 255), FontHandle);
 
     //エネミーライフ表示
-   /* sprintf(buf, "ENEMY LIFE：%d", enemy.GetLife());
-    DrawString(300, 80, buf, GetColor(255, 255, 255), FontHandle);*/
-
     sprintf(buf, "ENEMY LIFE：%d", enemy.life);
-    DrawString(enemy.GetPosX(), enemy.GetPosY(), buf, GetColor(255, 255, 255), FontHandle);
+    DrawString(300, 40, buf, GetColor(255, 255, 255), FontHandle);
+
+   /* sprintf(buf, "ENEMY LIFE：%d", enemy.life);
+    DrawString(enemy.GetPosX(), enemy.GetPosY(), buf, GetColor(255, 255, 255), FontHandle);*/
 
     ////ゲームスコア表示
     //sprintf(buf, "SCORE：%d", enemy.GetScore());

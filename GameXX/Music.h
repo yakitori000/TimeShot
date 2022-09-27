@@ -21,7 +21,7 @@ public:
 	int ShotSound;			//発射音
 	int OutBulletSound;		//弾切れ音
 	int ZonbiVoice;			//ゾンビ移動時
-	int ScreamZonbiSound;	//ゾンビ死亡時
+	int ZonbiScreamSound;	//ゾンビ死亡時
 	int OpenSound;			//宝箱開けたときの音
 
 	/// <summary>
@@ -39,6 +39,11 @@ public:
 	/// </summary>
 	void playBGM();						
 	
+	/// <summary>
+	///銃関連のサウンド再生
+	/// </summary>
+	void playEnemy(bool HitFlag);
+
 	/// <summary>
 	///銃関連のサウンド再生
 	/// </summary>

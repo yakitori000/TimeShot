@@ -112,7 +112,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            for (int i = 0; i < ENEMY_NUM; i++)
            {
                
-               enemy[i].Update(player, 1.0f / 60.0f);
+               enemy[i].Update(player, music, 1.0f / 60.0f);
            }
           
            item.Updata(player, music);

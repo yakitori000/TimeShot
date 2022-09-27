@@ -11,6 +11,7 @@ class Character
 private:
   
     char buf[64];
+    char shot[255];
     int NowCount;
     int FontHandle;
     int FontHandle2;

@@ -2,6 +2,7 @@
 
 #include "DxLib.h"
 #include "Player.h"
+#include "Music.h"
 #include "map.h"
 #include "function.h"
 #include "collision.h"
@@ -13,8 +14,10 @@
 
 
 class Player;
+class Music;
 struct sHitRect;
-struct Item;
+
+
 
 // エネミー.
 class Enemy
@@ -72,7 +75,7 @@ private:
 	bool  onGround;										// 地面に立っているか
 	bool  hitHead;										// 頭が当たったか	
 	bool  hitWool;										// 壁に当たったか
-	bool  hitPlayer;									// プレイヤーに当たったか
+	bool  hitPlayerFlag;								// プレイヤーに当たったか
 	bool  Reverse;										//反転
 
 public:
@@ -83,7 +86,7 @@ public:
 	void Init();
 
 	// アップデート.
-	void Update(Player player,float deltaTime);
+	void Update(Player player, Music music, float deltaTime);
 
 	// 描画.
 	void Draw();

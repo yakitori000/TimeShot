@@ -37,6 +37,7 @@ void Enemy::Init()
 	onGround = false;
 	hitHead = false;
 	Reverse = false;
+	hitPlayerFlag = false;
 	LivCounter = 0;
 
 	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
@@ -45,7 +46,7 @@ void Enemy::Init()
 
 
 // アップデート.
-void Enemy::Update(Player player,float deltaTime)
+void Enemy::Update(Player player, Music music, float deltaTime)
 {
 	//接地してる？
 	if (onGround)
@@ -127,6 +128,7 @@ void Enemy::Update(Player player,float deltaTime)
 	if (damageFlag == true)
 	{
 		damageCounter++;
+		life--;
 
 		if (damageCounter == 5)
 		{
@@ -143,6 +145,8 @@ void Enemy::Update(Player player,float deltaTime)
 	if (player.GetHitPoint() > 0)
 	{
 		player.OnHitEnemy(x, y, w, h);
+		hitPlayerFlag = true;
+		//music.playEnemy(hitPlayerFlag);
 	}
 
 	// 当たり判定位置更新
