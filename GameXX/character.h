@@ -20,7 +20,7 @@ private:
     int TimeCount = nowCount;
 
     int TimeDiff;
-    LONGLONG TimeLimit = GetNowHiPerformanceCount() + 120000000;
+    LONGLONG TimeLimit = GetNowHiPerformanceCount() + 120000000.0f;
 
     double start, end;
     double total = 0.0f, set = 0.0f;
@@ -52,6 +52,6 @@ public:
     /// </summary>
     void GameOVER();
 
-    bool IsTimeLimit() { return TimeDiff; }
+    bool IsTimeLimit() { return TimeLimit; }
     
 };

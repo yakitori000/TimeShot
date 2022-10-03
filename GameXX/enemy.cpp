@@ -142,7 +142,7 @@ void Enemy::Update(Player player, Music music, float deltaTime)
 	}
 
 	//ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚Ä‚¢‚é‚©
-	if (player.GetHitPoint() > 0)
+	if (player.GetHitPoint() >= 0)
 	{
 		player.OnHitEnemy(x, y, w, h);
 		hitPlayerFlag = true;
