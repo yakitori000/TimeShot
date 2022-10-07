@@ -226,7 +226,7 @@ void Player::fixColPosition(sHitRect& hitRect)
     playerHit = hitRect;
 }
 
-void Player::OnHitEnemy(int enemyX, int enemyY, int enemyW, int enemyH)
+void Player::OnHitEnemy(float enemyX, float enemyY, int enemyW, int enemyH)
 {
     // エネミーとの当たり判定
     if (((px > enemyX && px < enemyX + enemyW) ||

@@ -38,10 +38,16 @@ public:
     void Title();
     
     /// <summary>
-    ///ゲーム内文字・時間表示
+    ///ゲーム内文字
     /// </summary>
-    void display(Player& player, Enemy& enemy, Item& item, float deltaTime);
+    void display(Player& player, Enemy& enemy, Item& item);
     
+    /// <summary>
+    ///時間表示
+    /// </summary>
+    void GameTime(float deltaTime);
+
+
     /// <summary>
     ///ゲームクリア時表示
     /// </summary>

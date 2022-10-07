@@ -9,7 +9,7 @@ void Character::Title()
     DrawStringToHandle(730, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
 }
 
-void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTime)
+void Character::display(Player& player, Enemy& enemy, Item& item)
 {
     /*TimeCount = int(TimeCount - GetNowHiPerformanceCount());*/
     FontHandle = CreateFontToHandle(NULL, 40, 9);
@@ -33,16 +33,7 @@ void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTim
     //sprintf(buf, "SCORE：%d", enemy.GetScore());
     //DrawString(420, 80, buf, GetColor(255, 255, 255), FontHandle);
 
-    //制限時間表示
-    TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
-    if (TimeDiff <= 30000000)
-    {
-        DrawFormatString(400, 80, GetColor(255, 0, 0), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
-    }
-    else
-    {
-        DrawFormatString(400, 80, GetColor(255, 255, 255), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
-    }
+   
 
     //プレイヤーが宝箱に当たったら...
     if (item.HitFlag)
@@ -57,6 +48,20 @@ void Character::display(Player& player, Enemy& enemy, Item& item, float deltaTim
         DrawString(835, 108, buf, GetColor(255, 255, 255), FontHandle);
     }
     
+}
+
+void Character::GameTime(float deltaTime)
+{
+    //制限時間表示
+    TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
+    if (TimeDiff <= 30000000)
+    {
+        DrawFormatString(400, 80, GetColor(255, 0, 0), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
+    }
+    else
+    {
+        DrawFormatString(400, 80, GetColor(255, 255, 255), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
+    }
 }
 
 void Character::GameCLEAR()

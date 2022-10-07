@@ -23,14 +23,14 @@ struct sHitRect;
 class Enemy
 {
 private:
-	/*float x[ENEMY_NUM];
-	float y[ENEMY_NUM];*/
-	float	x;
-	float	y;
+	float x[ENEMY_NUM];
+	float y[ENEMY_NUM];
+	/*float	x;
+	float	y;*/
 	int		w;
 	int		h;
 	float	vx, vy;
-	int		graph;
+	
 
 	int num[ENEMY_NUM];
 
@@ -38,9 +38,21 @@ private:
 	float PosX[ENEMY_NUM] = {};
 	float PosY[ENEMY_NUM] = {};
 
+	int		graph;										// 通常画像
 	bool	damageFlag;									// ダメージ食らってるか
 	int		damageCounter;								// ダメージ数
 	int		damageGraph;								// ダメージ画像
+
+	/*int ax = 1;
+	int ay = 1;
+	int bx = 2;
+	int by = 2;
+	int cx = 3;
+	int cy = 3;
+	int dx = 4;
+	int dy = 4;
+	int ex = 5;
+	int ey = 5;*/
 
 	bool	LivFlag;									// 生きているか
 	int		LivCounter;									// 生存者数

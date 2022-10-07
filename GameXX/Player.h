@@ -114,7 +114,7 @@ public:
 	/// <summary>
 	/// エネミーに当たっているか
 	/// </summary>
-	void OnHitEnemy(int enemyX, int enemyY, int enemyW, int enemyH);
+	void OnHitEnemy(float enemyX, float enemyY, int enemyW, int enemyH);
 
 	/// <summary>
 	/// 地面に立っているか？

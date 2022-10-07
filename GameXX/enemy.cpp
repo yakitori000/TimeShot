@@ -17,9 +17,22 @@ void Enemy::Init()
 	
 	life = ENEMY_LIFE;				//敵の体力
 
-	x = GetRand(ENEMY_MAXX);		//敵のX座標
-	y = GetRand(ENEMY_MAXY);		//敵のY座標
+	x[0] = GetRand(ENEMY_MAXX);		//敵のX座標
+	y[0] = GetRand(ENEMY_MAXY);		//敵のY座標
+
+	x[1] = GetRand(ENEMY_MAXX);		//敵のX座標
+	y[1] = GetRand(ENEMY_MAXY);		//敵のY座標
+
+	x[2] = GetRand(ENEMY_MAXX);		//敵のX座標
+	y[2] = GetRand(ENEMY_MAXY);		//敵のY座標
 	
+	x[3] = GetRand(ENEMY_MAXX);		//敵のX座標
+	y[3] = GetRand(ENEMY_MAXY);		//敵のY座標
+	
+	x[4] = GetRand(ENEMY_MAXX);		//敵のX座標
+	y[4] = GetRand(ENEMY_MAXY);		//敵のY座標
+
+
 	// 当たり判定初期化
 	initRect(enemyHit, hitSizeX, hitSizeY);
 	initRect(enemyFootCollider, hitSizeX - colliderOffset, 1);
@@ -66,32 +79,18 @@ void Enemy::Update(Player player, Music music, float deltaTime)
 	}
 
 	// エネミーの座標を移動している方向に移動する
-	if (isRightMove == true)
+	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		x += 3;
-		Reverse = true;
-	}
-	else
-	{
-		x -= 3;
-		Reverse = false;
-	}
-
-	//壁に当たったらジャンプする
-	if (x == hitrect.worldLX)
-	{
-		// 方向転換
-		if (vx > 0.0f)
+		if (isRightMove == true)
 		{
-			vx *= brakeRatio;
+			x[i] += 3;
+			Reverse = true;
 		}
-		// 地上加速度
-		vx += -moveAccell * deltaTime;
-	}
-	else
-	{
-		//空中加速度
-		vy += -moveAccell * inAirMoveAccelRatio * deltaTime;
+		else
+		{
+			x[i] -= 3;	
+			Reverse = false;
+		}
 	}
 	
 	if (!jumpFlag)
@@ -108,21 +107,28 @@ void Enemy::Update(Player player, Music music, float deltaTime)
 	}
 
 	// 位置更新
-	x += vx;
-	y += vy;
+	for (int i = 0; i < ENEMY_NUM; i++)
+	{
+		x[i] += vx;
+		y[i] += vy;
+	}
 
 	// エネミーが画面端からでそうになっていたら画面内の座標に戻してあげ、移動する方向も反転する
-	if (x > SCREEN_W - w)
+	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		x = SCREEN_W - w;
-		isRightMove = false;
+		if (x[i] > SCREEN_W - w)
+		{
+			x[i] = SCREEN_W - w;
+			isRightMove = false;
+		}
+		else if (x[i] < 0)
+		{
+			x[i] = 0;
+		
+			isRightMove = true;
+		}
 	}
-	else if (x < 0)
-	{
-		x = 0;
-		isRightMove = true;
-	}
-
+	
 	// エネミーを描画
 	// ダメージを受けているかどうかで処理を分岐
 	if (damageFlag == true)
@@ -141,18 +147,26 @@ void Enemy::Update(Player player, Music music, float deltaTime)
 		}
 	}
 
-	//プレイヤーに当たっているか
-	if (player.GetHitPoint() >= 0)
+	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		player.OnHitEnemy(x, y, w, h);
-		hitPlayerFlag = true;
-		//music.playEnemy(hitPlayerFlag);
+		//プレイヤーに当たっているか
+		if (player.GetHitPoint() >= 0)
+		{
+			player.OnHitEnemy(x[i], y[i], w, h);
+
+			hitPlayerFlag = true;
+			//music.playEnemy(hitPlayerFlag);
+		}
 	}
+	
 
 	// 当たり判定位置更新
-	updateWorldRect(enemyHit, x, y);
-	updateWorldRect(enemyFootCollider, x + colliderOffset / 2, y + enemyHit.h);
-	updateWorldRect(enemyHeadCollider, x + colliderOffset / 2, y + enemyHeadCollider.h);
+	for (int i = 0; i < ENEMY_NUM; i++)
+	{
+		updateWorldRect(enemyHit, x[i], y[i]);
+		updateWorldRect(enemyFootCollider, x[i] + colliderOffset / 2, y[i] + enemyHit.h);
+		updateWorldRect(enemyHeadCollider, x[i] + colliderOffset / 2, y[i] + enemyHeadCollider.h);
+	}
 }
 
 // 描画.
@@ -164,18 +178,28 @@ void Enemy::Draw()
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
 		if (damageFlag == true)
 		{
-			DrawGraph(static_cast<int>(x) + drawOffsetX,
-				static_cast<int>(y) + drawOffsetY, damageGraph, TRUE);
+			for (int i = 0; i < ENEMY_NUM; i++)
+			{
+				DrawGraph(static_cast<int>(x[i]) + drawOffsetX,
+					static_cast<int>(y[i]) + drawOffsetY, damageGraph, TRUE);
+			}
 		}
 		else if (Reverse)
 		{
-			DrawTurnGraph(static_cast<int>(x) + drawOffsetX,
-				static_cast<int>(y) + drawOffsetY, graph, TRUE);
+			for (int i = 0; i < ENEMY_NUM; i++)
+			{
+				DrawTurnGraph(static_cast<int>(x[i]) + drawOffsetX,
+					static_cast<int>(y[i]) + drawOffsetY, graph, TRUE);
+			}
 		}
 		else
 		{
-			DrawGraph(static_cast<int>(x) + drawOffsetX,
-				static_cast<int>(y) + drawOffsetY, graph, TRUE);
+			for (int i = 0; i < ENEMY_NUM; i++)
+			{
+				DrawGraph(static_cast<int>(x[i]) + drawOffsetX,
+					static_cast<int>(y[i]) + drawOffsetY, graph, TRUE);
+			}
+			
 		}
 	}
 }
@@ -187,32 +211,33 @@ sHitRect Enemy::getHitRect()
 
 void Enemy::OnHitShot(int shotX, int shotY, int shotW, int shotH, bool visibleFlag)
 {
-	// エネミーとの当たり判定
-	if (((shotX > x && shotX < x) ||
-		(x > shotX && x < shotX + shotW)) &&
-		((shotY > y && shotY < y + h) ||
-			(y > shotY && y < shotY + shotH)))
+	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		//ヘッドショット判定
-		/*if (true )
+		// エネミーとの当たり判定
+		if (((shotX > x[i] && shotX < x[i]) ||
+			(x[i] > shotX && x[i] < shotX + shotW)) &&
+			((shotY > y[i] && shotY < y[i] + h) ||
+				(y[i] > shotY && y[i] < shotY + shotH)))
 		{
-			life -= 10;
-		}*/
-		
-		// 接触している場合は当たった弾の存在を消す
-		visibleFlag = false;
+			//ヘッドショット判定
+			/*if (true )
+			{
+				life -= 10;
+			}*/
 
-		// エネミーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
-		damageFlag = true;
+			// 接触している場合は当たった弾の存在を消す
+			visibleFlag = false;
 
-		// エネミーの顔を歪めている時間を測るカウンタ変数に０を代入
-		damageCounter = 0;
+			// エネミーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
+			damageFlag = true;
 
-		// ライフ減少＆スコア加算
-		life -= 1;
-		Score += 1;
+			// エネミーの顔を歪めている時間を測るカウンタ変数に０を代入
+			damageCounter = 0;
+
+			// ライフ減少＆スコア加算
+			life -= 1;
+		}
 	}
-
 }
 
 void Enemy::setPosition(float x, float y, int num)
@@ -223,9 +248,12 @@ void Enemy::setPosition(float x, float y, int num)
 
 void Enemy::fixColPosition(sHitRect& hitRect)
 {
-	x = hitRect.worldLX;
-	y = hitRect.worldLY;
-
+	for (int i = 0; i < ENEMY_NUM; i++)
+	{
+		x[i] = hitRect.worldLX;
+		y[i] = hitRect.worldLY;
+	}
+	
 	enemyHit = hitRect;
 }
 
