@@ -1,5 +1,10 @@
 
 #include "Enemy.h"
+#include "Player.h"
+#include "Music.h"
+#include "map.h"
+#include "function.h"
+#include "collision.h"
 
 sHitRect hitrect;
 sHitRect enemyHit;                          // ƒvƒŒƒCƒ„[“–‚½‚è”»’è

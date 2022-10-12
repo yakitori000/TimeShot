@@ -1,11 +1,7 @@
 #pragma once
 
-
 #include "DxLib.h"
-#include "Player.h"
-#include "Music.h"
-#include "collision.h"
-#include "function.h"
+
 
 class Player;
 class Music;

@@ -1,5 +1,10 @@
 
 #include "player.h"
+#include "shot.h"
+#include "Item.h"
+#include "Music.h"
+#include "map.h"
+
 
 const int animPatternNum         = 3;        // アニメーションのパターン数
 const int animTypeNum            = 9;        // アニメーションの種類

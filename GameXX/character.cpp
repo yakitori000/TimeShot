@@ -1,5 +1,10 @@
 
 #include "character.h"
+#include "Player.h"
+#include "enemy.h"
+#include "Item.h"
+
+
 void Character::Init()
 {
     FontHandle2 = LoadFontDataToHandle("data/vermin vibes 1989ƒVƒtƒgJIS.dft",1);

@@ -1,8 +1,7 @@
 #pragma once
 
 #include "DxLib.h"
-#include "Player.h"
-#include "Item.h"
+
 
 class player;
 class Item;

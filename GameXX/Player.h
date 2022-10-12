@@ -1,9 +1,5 @@
 #pragma once
 #include"DxLib.h"
-#include "shot.h"
-#include "Item.h"
-#include "map.h"
-#include "Music.h"
 #include "collision.h"
 
 class Shot;

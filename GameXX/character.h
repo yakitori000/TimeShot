@@ -1,10 +1,14 @@
 #pragma once
 #include <windows.h>
 #include "DxLib.h"
-#include "Player.h"
+
 #include <time.h>
-#include "Item.h"
+
 #pragma warning(disable:4996)
+
+class Player;
+class Enemy;
+class Item;
 
 class Character
 {

@@ -1,5 +1,7 @@
 
 #include "Music.h"
+#include "Player.h"
+#include "Item.h"
 
 void Music::Init()
 {

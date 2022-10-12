@@ -1,23 +1,15 @@
 #pragma once
 
 #include "DxLib.h"
-#include "Player.h"
-#include "Music.h"
-#include "map.h"
-#include "function.h"
-#include "collision.h"
 
 #define ENEMY_LIFE		10
 #define ENEMY_NUM		5
 #define ENEMY_MAXX		1900
 #define ENEMY_MAXY		600
 
-
 class Player;
 class Music;
 struct sHitRect;
-
-
 
 // エネミー.
 class Enemy

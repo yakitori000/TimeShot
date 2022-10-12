@@ -1,4 +1,8 @@
 #include "Item.h"
+#include "Player.h"
+#include "Music.h"
+#include "collision.h"
+#include "function.h"
 
 void Item::Init(Music& music)
 {
