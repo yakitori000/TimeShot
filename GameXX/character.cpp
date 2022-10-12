@@ -28,8 +28,16 @@ void Character::display(Player& player, Enemy& enemy, Item& item)
     DrawString(180, 80, buf, GetColor(255, 255, 255), FontHandle);
 
     //エネミーライフ表示
-    sprintf(buf, "ENEMY LIFE：%d", enemy.life);
+    sprintf(buf, "ENEMY LIFE：%d", enemy.life1);
+    DrawString(300, 20, buf, GetColor(255, 255, 255), FontHandle);
+
+    //エネミーライフ表示
+    sprintf(buf, "ENEMY LIFE：%d", enemy.life2);
     DrawString(300, 40, buf, GetColor(255, 255, 255), FontHandle);
+
+    //エネミーライフ表示
+    sprintf(buf, "ENEMY LIFE：%d", enemy.life3);
+    DrawString(300, 60, buf, GetColor(255, 255, 255), FontHandle);
 
    /* sprintf(buf, "ENEMY LIFE：%d", enemy.life);
     DrawString(enemy.GetPosX(), enemy.GetPosY(), buf, GetColor(255, 255, 255), FontHandle);*/
