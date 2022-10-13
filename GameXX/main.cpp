@@ -113,7 +113,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
            music.playBGM();
 
-           if (TimeDiff <= 30000000)
+           if (TimeDiff <= 31000000)
            {
                StopSoundMem(music.GameMusic);
                music.playBGM2();
@@ -233,7 +233,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                 }
             
             //ゲームオーバー条件
-            if (player.GetHitPoint() <= 0 || TimeDiff <= 00000000)
+            if (player.GetHitPoint() <= 0 || TimeDiff <= 02000000)
             {
                 StopSoundMem(music.GameMusic);
                 StopSoundMem(music.GameImpatientMusic);

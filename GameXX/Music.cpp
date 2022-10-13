@@ -6,7 +6,7 @@
 void Music::Init()
 {
 	TitleMusic			= LoadSoundMem("data/sound/GameMusic.mp3");
-	GameMusic			= LoadSoundMem("data/sound/GameMusic.WAV");
+	GameMusic			= LoadSoundMem("data/sound/GameMusic1.WAV");
 	GameImpatientMusic	= LoadSoundMem("data/sound/GameMusic2.WAV");
 	ShotSound			= LoadSoundMem("data/sound/shot.mp3");
 	OutBulletSound		= LoadSoundMem("data/sound/OutBullet.mp3");
