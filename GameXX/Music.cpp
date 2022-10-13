@@ -5,13 +5,14 @@
 
 void Music::Init()
 {
-	TitleMusic		 = LoadSoundMem("data/sound/GameMusic.mp3");
-	GameMusic		 = LoadSoundMem("data/sound/GameMusic.WAV");
-	ShotSound		 = LoadSoundMem("data/sound/shot.mp3");
-	OutBulletSound	 = LoadSoundMem("data/sound/OutBullet.mp3");
-	OpenSound		 = LoadSoundMem("data/sound/OpenBox.mp3");
-	ZonbiVoice		 = LoadSoundMem("data/sound/ZonbiVoice2.mp3");
-	ZonbiScreamSound = LoadSoundMem("data/sound/ZonbiScream.mp3");
+	TitleMusic			= LoadSoundMem("data/sound/GameMusic.mp3");
+	GameMusic			= LoadSoundMem("data/sound/GameMusic.WAV");
+	GameImpatientMusic	= LoadSoundMem("data/sound/GameMusic2.WAV");
+	ShotSound			= LoadSoundMem("data/sound/shot.mp3");
+	OutBulletSound		= LoadSoundMem("data/sound/OutBullet.mp3");
+	OpenSound			= LoadSoundMem("data/sound/OpenBox.mp3");
+	ZonbiVoice			= LoadSoundMem("data/sound/ZonbiVoice2.mp3");
+	ZonbiScreamSound	= LoadSoundMem("data/sound/ZonbiScream.mp3");
 }
 
 void Music::playTitleSound()
@@ -25,6 +26,14 @@ void Music::playBGM()
 	ChangeNextPlayVolumeSoundMem(90,GameMusic);
 	//çƒê∂
 	PlaySoundMem(GameMusic, DX_PLAYTYPE_LOOP,FALSE);
+}
+
+void Music::playBGM2()
+{
+	//âπó í≤êÆ
+	ChangeNextPlayVolumeSoundMem(90, GameImpatientMusic);
+	//çƒê∂
+	PlaySoundMem(GameImpatientMusic, DX_PLAYTYPE_LOOP, FALSE);
 }
 
 void Music::playEnemy(bool HitFlag)

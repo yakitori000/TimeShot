@@ -59,6 +59,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     int TimeDiff = 0;
     LONGLONG TimeLimit = GetNowHiPerformanceCount() + 120000000.0f;
+    
 
     GameSituation = TITLE;
 
@@ -108,8 +109,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            float deltaTime;
            nowCount = GetNowCount();
            deltaTime = (nowCount - prevCount) / 1000.0f;
-           
+           TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
+
            music.playBGM();
+
+           if (TimeDiff <= 30000000)
+           {
+               StopSoundMem(music.GameMusic);
+               music.playBGM2();
+           }
             
            //更新処理 120fps想定
            player.Update(shot, SHOT, item, music, 1.0f / 60.0f);
@@ -220,13 +228,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                 if (enemy.life1 <= 0 && enemy.life2 <= 0 && enemy.life3 <= 0)
                 {
                     StopSoundMem(music.GameMusic);
+                    StopSoundMem(music.GameImpatientMusic);
                     GameSituation = CLEAR;
                 }
             
             //ゲームオーバー条件
-            if (player.GetHitPoint() <= 0 || TimeDiff >= 110000000)
+            if (player.GetHitPoint() <= 0 || TimeDiff <= 00000000)
             {
                 StopSoundMem(music.GameMusic);
+                StopSoundMem(music.GameImpatientMusic);
                 GameSituation = OVER;
             }
             

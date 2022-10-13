@@ -1,0 +1,16 @@
+diff a/GameXX/character.cpp b/GameXX/character.cpp	(rejected hunks)
+@@ -22,9 +22,11 @@
+     sprintf(buf, "Bullets�F%d", player.count);
+     DrawString(180, 80, buf, GetColor(255, 255, 255), FontHandle);
+ 
+-    //�G�l�~�[���C�t�\��
+-    sprintf(buf, "ENEMY LIFE�F%d", enemy.life);
+-    DrawString(300, 40, buf, GetColor(255, 255, 255), FontHandle);
++   
++
++
++    //sprintf(life, "ENEMY LIFE�F%d", enemy.GetLife());
++    //DrawString(300, 40, life, GetColor(0, 255, 255), FontHandle);
+ 
+    /* sprintf(buf, "ENEMY LIFE�F%d", enemy.life);
+     DrawString(enemy.GetPosX(), enemy.GetPosY(), buf, GetColor(255, 255, 255), FontHandle);*/

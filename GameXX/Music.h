@@ -11,10 +11,11 @@ class Music
 public:
 
 	//ゲームミュージック
-	int TitleMusic;			//タイトルサウンド
-	int GameMusic;			//ゲームBGM
-	int ClearMusic;			//ゲームクリアサウンド
-	int OverMusic;			//ゲームオーバーサウンド
+	int TitleMusic;				//タイトルサウンド
+	int GameMusic;				//ゲームBGM
+	int GameImpatientMusic;		//焦らせるBGM
+	int ClearMusic;				//ゲームクリアサウンド
+	int OverMusic;				//ゲームオーバーサウンド
 
 	//効果音
 	int ShotSound;			//発射音
@@ -37,6 +38,11 @@ public:
 	///ゲームBGM再生
 	/// </summary>
 	void playBGM();						
+
+	/// <summary>
+	///ゲーム焦らせるBGM再生
+	/// </summary>
+	void playBGM2();
 	
 	/// <summary>
 	///銃関連のサウンド再生

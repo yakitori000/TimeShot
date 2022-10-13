@@ -43,8 +43,10 @@ private:
 
 	int		graph1;										// 通常画像
 	int		damageGraph1;								// ダメージ画像
+	
 	int		graph2;										// 通常画像
 	int		damageGraph2;								// ダメージ画像
+	
 	int		graph3;										// 通常画像
 	int		damageGraph3;								// ダメージ画像
 
@@ -105,7 +107,7 @@ private:
 	const float		frictionRatio1			= 0.98f;    // 摩擦係数
 	const float		brakeRatio1				= 0.95f;    // 進行方向に対して入力逆方向に入れたときのブレーキ係数
 	const float		inAirMoveAccelRatio1	= 0.8f;     // 空中横移動加速率
-	const float		jumpInitalVelocity1		= 10.5f;     // ジャンプ初速度
+	const float		jumpInitalVelocity1		= 10.5f;    // ジャンプ初速度
 	const float		jumpUpSpeed1			= 9.0f;     // ジャンプ長押し中上昇速度
 
 	const float		moveSpeed2				= 200.0f;   // 移動速度 (ここで指定した値分のピクセル/秒進む) 
