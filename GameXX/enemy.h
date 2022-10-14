@@ -38,8 +38,8 @@ private:
 	
 	/*int num[ENEMY_NUM];*/
 
-	float PosX[ENEMY_NUM] = {};
-	float PosY[ENEMY_NUM] = {};
+	/*float PosX[ENEMY_NUM] = {};
+	float PosY[ENEMY_NUM] = {};*/
 
 	int		graph1;										// ’Êí‰æ‘œ
 	int		damageGraph1;								// ƒ_ƒ[ƒW‰æ‘œ
@@ -191,9 +191,9 @@ public:
 	
 	//void setPosition(float x, float y, int num);
 
-	bool GetPosX()const { return PosX; }
-	bool GetPosY()const { return PosY; }
-	bool GetScore()const { return Score; }
+	/*bool GetPosX()const { return PosX; }
+	bool GetPosY()const { return PosY; }*/
+	/*bool GetScore()const { return Score; }*/
 	bool GetLife1()const { return life1; }
 	bool GetLife2()const { return life2; }
 	bool GetLife3()const { return life3; }

@@ -1,6 +1,7 @@
 #pragma once
 #include "DxLib.h"
 #include <math.h>
+#pragma warning (disable::4996)
 
 /// <summary>
 /// “–‚½‚è”»’è’ZŒ`

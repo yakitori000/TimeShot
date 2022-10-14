@@ -37,7 +37,7 @@ void Shot::Update(Player& player, Enemy& enemy)
 				x += SHOT_SPEED;
 			}
 		}
-		if (x < 0 - w || x > SCREEN_W)
+		if (x < SCREEN_WMIN - w || x > SCREEN_WMAX)
 		{
 			visibleFlag = false;
 		}

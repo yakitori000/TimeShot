@@ -86,15 +86,14 @@ void Player::Update(Shot shot[],int shotnum ,Item &item,Music &music, float delt
     }
 
     // プレイヤーが画面端からでそうになっていたら画面内の座標に戻す
-    if (px > SCREEN_W - w)
+    if (px > SCREEN_WMAX - w)
     {
-        px = SCREEN_W - w;
+        px = SCREEN_WMAX - w;
         
     }
-    else if (px < 0)
+    else if (px < SCREEN_WMIN)
     {
-        vx = 0;
-        px = 0;
+        px = SCREEN_WMIN;
         
     }
 
@@ -316,14 +315,13 @@ bool Player::inputMove(float deltaTime)
         isMove = true;
 
         //プレイヤーが画面外に出そうなら
-        if (px > SCREEN_W - w)
+        if (px > SCREEN_WMAX - w)
         {
-            px = SCREEN_W - w;
+            px = SCREEN_WMAX - w;
         }
-        else if (px < 0)
+        else if (px < SCREEN_WMIN)
         {
-            px = 0;
-            vx = 0;
+            px = SCREEN_WMIN;
         }
 
         //射撃中

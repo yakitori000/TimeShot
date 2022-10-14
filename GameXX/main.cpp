@@ -19,7 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 {
 
     // DxLib初期化
-    SetGraphMode(SCREEN_W, SCREEN_H, 16);
+    SetGraphMode(SCREEN_WMAX, SCREEN_H, 16);
     ChangeWindowMode(TRUE);
 
     if (DxLib_Init() == -1)
@@ -167,28 +167,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            playerRect = player.GetGroundCollider();
            player.SetGroundFlag(map.HitCalc(playerRect));
            
-               enemyRect = enemy.GetGroundCollider1();
-               enemy.SetGroundFlag1(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetGroundCollider1();
+           enemy.SetGroundFlag1(map.HitCalc(enemyRect));
 
-               enemyRect = enemy.GetGroundCollider2();
-               enemy.SetGroundFlag2(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetGroundCollider2();
+           enemy.SetGroundFlag2(map.HitCalc(enemyRect));
 
-               enemyRect = enemy.GetGroundCollider3();
-               enemy.SetGroundFlag3(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetGroundCollider3();
+           enemy.SetGroundFlag3(map.HitCalc(enemyRect));
            
 
            // 頭上チェック
            playerRect = player.GetHeadCollider();
            player.SetHeadHitFlag(map.HitCalc(playerRect));
            
-               enemyRect = enemy.GetHeadCollider1();
-               enemy.SetHeadHitFlag1(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetHeadCollider1();
+           enemy.SetHeadHitFlag1(map.HitCalc(enemyRect));
 
-               enemyRect = enemy.GetHeadCollider2();
-               enemy.SetHeadHitFlag2(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetHeadCollider2();
+           enemy.SetHeadHitFlag2(map.HitCalc(enemyRect));
 
-               enemyRect = enemy.GetHeadCollider3();
-               enemy.SetHeadHitFlag3(map.HitCalc(enemyRect));
+           enemyRect = enemy.GetHeadCollider3();
+           enemy.SetHeadHitFlag3(map.HitCalc(enemyRect));
            
 
            //スクロール更新処理
@@ -223,14 +223,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                character.display(player, enemy, item); 
                character.GameTime(1.0f / 60.0f);
            
-           //ゲームクリア条件
-            
-                if (enemy.life1 <= 0 && enemy.life2 <= 0 && enemy.life3 <= 0)
-                {
-                    StopSoundMem(music.GameMusic);
-                    StopSoundMem(music.GameImpatientMusic);
-                    GameSituation = CLEAR;
-                }
+             //ゲームクリア条件
+            if (enemy.life1 <= 0 && enemy.life2 <= 0 && enemy.life3 <= 0)
+            {
+                StopSoundMem(music.GameMusic);
+                StopSoundMem(music.GameImpatientMusic);
+                GameSituation = CLEAR;
+            }
             
             //ゲームオーバー条件
             if (player.GetHitPoint() <= 0 || TimeDiff <= 02000000)

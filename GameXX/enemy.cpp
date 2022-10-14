@@ -180,21 +180,20 @@ void Enemy::Update1(Player player, Music music, float deltaTime)
 	}
 
 	// 位置更新
-	for (int i = 0; i < ENEMY_NUM; i++)
-	{
-		x1 += vx1;
-		y1 += vy1;
-	}
+	
+	x1 += vx1;
+	y1 += vy1;
+	
 
 	// エネミーが画面端からでそうになっていたら画面内の座標に戻してあげ、移動する方向も反転する
-	if (x1 > SCREEN_W - w1)
+	if (x1 > SCREEN_WMAX - w1)
 	{
-		x1 = SCREEN_W - w1;
+		x1 = SCREEN_WMAX - w1;
 		isRightMove1 = false;
 	}
-	else if (x1 < 0)
+	else if (x1 < SCREEN_WMIN)
 	{
-		x1 = 0;
+		x1 = SCREEN_WMIN;
 	
 		isRightMove1 = true;
 	}
@@ -285,14 +284,14 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 
 
 	// エネミーが画面端からでそうになっていたら画面内の座標に戻してあげ、移動する方向も反転する
-	if (x2 > SCREEN_W - w2)
+	if (x2 > SCREEN_WMAX - w2)
 	{
-		x2 = SCREEN_W - w2;
+		x2 = SCREEN_WMAX - w2;
 		isRightMove2 = false;
 	}
-	else if (x2 < 0)
+	else if (x2 < SCREEN_WMIN)
 	{
-		x2 = 0;
+		x2 = SCREEN_WMIN;
 
 		isRightMove2 = true;
 	}
@@ -382,14 +381,14 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	y3 += vy3;
 
 	// エネミーが画面端からでそうになっていたら画面内の座標に戻してあげ、移動する方向も反転する
-	if (x3 > SCREEN_W - w3)
+	if (x3 > SCREEN_WMAX - w3)
 	{
-		x3 = SCREEN_W - w3;
+		x3 = SCREEN_WMAX - w3;
 		isRightMove3 = false;
 	}
-	else if (x3 < 0)
+	else if (x3 < SCREEN_WMIN)
 	{
-		x3 = 0;
+		x3 = SCREEN_WMIN;
 
 		isRightMove3 = true;
 	}
@@ -527,7 +526,7 @@ void Enemy::OnHitShot1(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		//ヘッドショット判定
 		/*if (true )
 		{
-			life -= 10;
+			life1 -= 10;
 		}*/
 
 		// 接触している場合は当たった弾の存在を消す
@@ -555,7 +554,7 @@ void Enemy::OnHitShot2(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		//ヘッドショット判定
 		/*if (true )
 		{
-			life -= 10;
+			life2 -= 10;
 		}*/
 
 		// 接触している場合は当たった弾の存在を消す
@@ -583,7 +582,7 @@ void Enemy::OnHitShot3(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		//ヘッドショット判定
 		/*if (true )
 		{
-			life -= 10;
+			life3 -= 10;
 		}*/
 
 		// 接触している場合は当たった弾の存在を消す
@@ -688,4 +687,5 @@ sHitRect Enemy::GetHeadCollider3()
 {
 	return enemyHeadCollider3;
 }
+
 
