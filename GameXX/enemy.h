@@ -10,6 +10,7 @@
 
 class Player;
 class Music;
+class ShotEnemy;
 struct sHitRect;
 
 // エネミー.
@@ -23,6 +24,7 @@ private:
 	int		w1;
 	int		h1;
 	float	vx1, vy1;
+	int		count1;
 
 	float	x2;
 	float	y2;
@@ -72,8 +74,6 @@ private:
 	int		LivCounter3;									// 生存者数
 	int		LivGraph3;									// 
 	
-	int		Score;
-
 	bool	isRightMove1;								// 画面外にださない
 	int		drawOffsetX1;								// 当たり判定からの横方向ずらし量
 	int		drawOffsetY1;								// 当たり判定からの縦方向ずらし量
@@ -143,11 +143,13 @@ private:
 	const float		maxFallSpeed3			= 300.0f;	// 最大落下速度
 	const float		hitHeadBrakeRatio3		= -0.1f;    // 頭上衝突時の減速率
 
+	int   ShotIntervalCount1;							// 前フレームにショットされていたか
 	bool  jumpFlag1;									// ジャンプフラグ
 	bool  onGround1;									// 地面に立っているか
 	bool  hitHead1;										// 頭が当たったか
 	bool  hitWool1;										// 壁に当たったか	
-	bool  hitPlayerFlag1;								// プレイヤーに当たったか	
+	bool  hitPlayerFlag1;								// プレイヤーに当たったか
+	bool  ShotFlag1;									// 発射しているか
 	bool  Reverse1;										//反転	
 	
 	bool  jumpFlag2;									// ジャンプフラグ
@@ -176,7 +178,7 @@ public:
 	void Init3();
 
 	// アップデート
-	void Update1(Player player, Music music, float deltaTime);
+	void Update1(Player player, Music music, ShotEnemy shot[], int shotnum, float deltaTime);
 	void Update2(Player player, Music music, float deltaTime);
 	void Update3(Player player, Music music, float deltaTime);
 
@@ -191,12 +193,20 @@ public:
 	
 	//void setPosition(float x, float y, int num);
 
-	/*bool GetPosX()const { return PosX; }
-	bool GetPosY()const { return PosY; }*/
-	/*bool GetScore()const { return Score; }*/
+	//bool GetPosX()const { return PosX; }
+	//bool GetPosY()const { return PosY; }
+	//bool GetScore()const { return Score; }
+	
 	bool GetLife1()const { return life1; }
 	bool GetLife2()const { return life2; }
 	bool GetLife3()const { return life3; }
+
+	bool GetX1() const { return x1; }
+	bool GetY1() const { return y1; }
+	bool GetW1() const { return w1; }
+	bool GetH1() const { return h1; }
+
+	bool GetReverse1() const { return Reverse1; }
 
 	/// <summary>
 	/// エネミーの当たり判定矩形を返す

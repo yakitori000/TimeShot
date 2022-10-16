@@ -205,6 +205,29 @@ void Player::Draw()
     drawRect(playerHeadCollider, scrollOffsetX, scrollOffsetY);*/
 }
 
+void Player::OnHitShot(int shotX, int shotY, int shotW, int shotH, bool visibleFlag)
+{
+    // エネミーとの当たり判定
+    if (((shotX > px && shotX < px) ||
+        (px > shotX && px < shotX + shotW)) &&
+        ((shotY > py && shotY < py + h) ||
+            (py > shotY && py < shotY + shotH)))
+    {
+
+        // 接触している場合は当たった弾の存在を消す
+        visibleFlag = false;
+
+        // プレイヤーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
+        DamageFlag = true;
+
+        // プレイヤーの顔を歪めている時間を測るカウンタ変数に０を代入
+        DamageCounter = 0;
+
+        // ライフ減少
+        HitPoint -= 1;
+    }
+}
+
 
 void Player::Finalize()
 {

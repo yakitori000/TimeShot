@@ -82,10 +82,12 @@ void Shot::Draw(Player& player)
 
 void Shot::OnShot(float PlayerX, float PlayerY, float PlayerW, float PlayerH)
 {
-	// 弾iの位置をセット、位置はプレイヤーの中心にする
+	// 弾の位置をセット、位置はプレイヤーの中心にする
 	x = (PlayerW - w) / 40 + PlayerX;
 	y = (PlayerH - h) / -1.5 + PlayerY;
 	
-	// 弾iは現時点を持って存在するので、存在状態を保持する変数にtrueを代入する
+	// 弾は現時点を持って存在するので、存在状態を保持する変数にtrueを代入する
 	visibleFlag = true;
 }
+
+

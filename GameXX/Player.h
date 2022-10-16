@@ -52,7 +52,7 @@ public:
 
 	bool sideFlag;									// 右向いているか
 	bool GetFlag;									// アイテム獲得できるか
-	bool DamegeFlag;								// ダメージを食らっているか
+	bool DamageFlag;								// ダメージを食らっているか
 	int	 DamageCounter;								// ダメージ数
 	int	 DamageGraph;								// ダメージ画像
 
@@ -89,6 +89,11 @@ public:
 	/// プレイヤー描画
 	/// </summary>
 	void Draw();
+
+	/// <summary>
+	/// プレイヤー被弾
+	/// </summary>
+	void OnHitShot(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
 
 	/// <summary>
 	/// プレイヤー後始末

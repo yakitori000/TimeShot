@@ -13,6 +13,7 @@ void Music::Init()
 	OpenSound			= LoadSoundMem("data/sound/OpenBox.mp3");
 	ZonbiVoice			= LoadSoundMem("data/sound/ZonbiVoice2.mp3");
 	ZonbiScreamSound	= LoadSoundMem("data/sound/ZonbiScream.mp3");
+	ZonbiAtack			= LoadSoundMem("data/sound/ZonbiAtack.mp3");
 }
 
 void Music::playTitleSound()
@@ -52,6 +53,17 @@ void Music::playEnemy(bool HitFlag)
 	ChangeNextPlayVolumeSoundMem(90, ZonbiScreamSound);
 	//Н─Р╢
 	//PlaySoundMem(ZonbiScreamSound, DX_PLAYTYPE_LOOP, FALSE);
+}
+
+void Music::playEnemyAtack(int count)
+{
+	if (count > 0)
+	{
+		//Й╣Ч╩Т▓Ро
+		ChangeNextPlayVolumeSoundMem(100, ZonbiAtack);
+		//Н─Р╢
+		PlaySoundMem(ZonbiAtack, DX_PLAYTYPE_BACK);
+	}
 }
 
 void Music::playShot(int count)

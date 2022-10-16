@@ -1,6 +1,7 @@
 
 #include "Enemy.h"
 #include "Player.h"
+#include "ShotEnemy.h"
 #include "Music.h"
 #include "map.h"
 #include "function.h"
@@ -56,7 +57,11 @@ void Enemy::Init1()
 	hitHead1 = false;
 	Reverse1 = false;
 	hitPlayerFlag1 = false;
+	ShotFlag1 = false;
+	
 	LivCounter1 = 0;
+	ShotIntervalCount1 = 0;
+	count1 = ESHOT;
 
 	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
 	damageFlag1 = false;	
@@ -64,7 +69,7 @@ void Enemy::Init1()
 
 void Enemy::Init2()
 {
-	graph2 = LoadGraph("data/image/panelu1.png");
+	graph2 = LoadGraph("data/image/Zonbi2.png");
 	damageGraph2 = LoadGraph("data/image/Zonbi.png");
 	GraphFilter(damageGraph2, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 
@@ -134,7 +139,7 @@ void Enemy::Init3()
 
 
 // 敵１アップデート
-void Enemy::Update1(Player player, Music music, float deltaTime)
+void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, float deltaTime)
 {
 	//接地してる？
 	if (onGround1)
@@ -145,6 +150,7 @@ void Enemy::Update1(Player player, Music music, float deltaTime)
 	else
 	{
 		jumpFlag1 = true;
+		
 	}
 
 	//頭上に当たった？
@@ -197,6 +203,42 @@ void Enemy::Update1(Player player, Music music, float deltaTime)
 	
 		isRightMove1 = true;
 	}
+
+	if (!ShotFlag1)
+	{
+		ShotFlag1 = true;
+		music.playEnemyAtack(count1);
+		if (count1 > 0)
+		{
+			// 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
+			for (int i = 0; i < ESHOT; i++)
+			{
+				// 弾iが画面上にでていない場合はその弾を画面に出す
+				if (shot[i].IsEVisibleFlag() == 0)
+				{
+
+					shot[i].OnShotEnemy(x1, y1, w1, h1);
+					count1 -= 1;
+					// 一つ弾を出したので弾を出すループから抜けます
+					ShotFlag1 = false;
+					break;
+				}
+			}
+		}
+
+		//// インターバル用のカウンターを設定.
+		//ShotIntervalCount1 = SHOT_INTERVAL;
+	}
+	/*else
+	{
+		ShotIntervalCount1 = 0;
+	}
+
+	if (ShotIntervalCount1 != 0)
+	{
+		--ShotIntervalCount1;
+	}*/
+
 
 	// エネミーを描画
 	// ダメージを受けているかどうかで処理を分岐

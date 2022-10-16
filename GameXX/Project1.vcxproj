@@ -162,6 +162,7 @@
     <ClCompile Include="ScreenImage.cpp" />
     <ClCompile Include="ScrollManager.cpp" />
     <ClCompile Include="shot.cpp" />
+    <ClCompile Include="ShotEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="ScreenImage.h" />
     <ClInclude Include="ScrollManager.h" />
     <ClInclude Include="shot.h" />
+    <ClInclude Include="ShotEnemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

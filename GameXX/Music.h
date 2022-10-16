@@ -20,6 +20,7 @@ public:
 	//効果音
 	int ShotSound;			//発射音
 	int OutBulletSound;		//弾切れ音
+	int ZonbiAtack;			//ゾンビ攻撃サウンド
 	int ZonbiVoice;			//ゾンビ移動時
 	int ZonbiScreamSound;	//ゾンビ死亡時
 	int OpenSound;			//宝箱開けたときの音
@@ -45,9 +46,15 @@ public:
 	void playBGM2();
 	
 	/// <summary>
-	///銃関連のサウンド再生
+	///敵関連のサウンド再生
 	/// </summary>
 	void playEnemy(bool HitFlag);
+
+	/// <summary>
+	///敵攻撃関連のサウンド再生
+	/// </summary>
+	void playEnemyAtack(int count);
+
 
 	/// <summary>
 	///銃関連のサウンド再生

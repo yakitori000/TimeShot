@@ -3,6 +3,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "shot.h"
+#include "ShotEnemy.h"
 #include "Item.h"
 #include "map.h"
 #include "character.h"
@@ -30,6 +31,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Player player{ };
     Enemy enemy{ };
     Shot shot[SHOT]{ };
+    ShotEnemy Eshot[ESHOT]{ };
     sMapLayer map;
     Item item;
     Character character;
@@ -55,6 +57,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     for (int i = 0; i < SHOT; i++)
     {
         shot[i].Init();
+    }
+    for (int j = 0; j < ESHOT; j++)
+    {
+        Eshot[j].InitShotEnemy();
     }
 
     int TimeDiff = 0;
@@ -122,7 +128,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            //更新処理 120fps想定
            player.Update(shot, SHOT, item, music, 1.0f / 60.0f);
                
-               enemy.Update1(player, music, 1.0f / 60.0f);
+               enemy.Update1(player, music, Eshot,ESHOT, 1.0f / 60.0f);
                enemy.Update2(player, music, 1.0f / 60.0f);
                enemy.Update3(player, music, 1.0f / 60.0f);
            
@@ -135,6 +141,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                    shot[i].Update(player, enemy);
                
            }
+           for (int j = 0; j < ESHOT; j++)
+           {
+               Eshot->UpdateShotEnemy(player, enemy);
+           }
 
            // プレイヤーの当たり判定矩形
            sHitRect playerRect;
@@ -142,10 +152,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
            //エネミーの当たり判定短形
            sHitRect enemyRect;
-           
-               enemyRect = enemy.getHitRect1();
-               enemyRect = enemy.getHitRect2();
-               enemyRect = enemy.getHitRect3();
+           enemyRect = enemy.getHitRect1();
+           enemyRect = enemy.getHitRect2();
+           enemyRect = enemy.getHitRect3();
            
 
            // もしぶつかったなら当たり判定ボックスから位置を修正する
@@ -156,11 +165,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
            if (map.HitCalc(enemyRect))
            {
-               
-                   enemy.fixColPosition1(enemyRect);
-                   enemy.fixColPosition2(enemyRect);
-                   enemy.fixColPosition3(enemyRect);
-               
+              enemy.fixColPosition1(enemyRect);
+              enemy.fixColPosition2(enemyRect);
+              enemy.fixColPosition3(enemyRect);
            }
 
            // 足元チェック
@@ -210,6 +217,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                shot[i].Draw(player);
            }
+
+           for (int j = 0; j < ESHOT; j++)
+           {
+               Eshot[j].DrawShotEnemy(enemy);
+           }
+
            item.Draw();
            player.Draw();
            

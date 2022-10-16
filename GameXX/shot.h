@@ -49,4 +49,5 @@ public:
 	void OnShot(float PlayerX, float PlayerY, float PlayerW, float PlayerH);
 
 	bool IsVisibleFlag() { return visibleFlag; }
+
 };
