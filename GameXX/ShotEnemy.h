@@ -7,7 +7,7 @@
 #include "function.h"
 
 #define ESHOT			100		//エネミーショット最大数
-#define SHOT_SPEED		20		//通常ショットスピード
+#define ESHOT_SPEED		20		//通常ショットスピード
 
 class Player;
 class Enemy;

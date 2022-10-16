@@ -5,7 +5,7 @@ void ShotEnemy::InitShotEnemy()
 {
 	// ƒVƒ‡ƒbƒg‚Ì‘¶Ý‚ð‰Šú‰»‚·‚é
 	int shotEnemyGraph;
-	shotEnemyGraph = LoadGraph("data/image/SuperShot.png");
+	shotEnemyGraph = LoadGraph("data/image/HADOU1.png");
 	EGraph = shotEnemyGraph;
 
 	//’e‚ª‰æ–Êã‚É‘¶Ý‚µ‚Ä‚¢‚È‚¢
@@ -25,13 +25,13 @@ void ShotEnemy::UpdateShotEnemy(Player& player, Enemy& enemy)
 	{
 		if (enemy.GetReverse1() == true)
 		{
-			ex -= SHOT_SPEED;
+			ex -= ESHOT_SPEED;
 		}
 		if (enemy.GetReverse1() == false)
 		{
 			if (ex >= enemy.GetX1() || ex <= enemy.GetX1())
 			{
-				ex += SHOT_SPEED;
+				ex += ESHOT_SPEED;
 			}
 		}
 		if (ex < SCREEN_WMIN - ew || ex > SCREEN_WMAX)
