@@ -7,6 +7,7 @@
 
 class Player;
 class Enemy;
+class Enemy2;
 class Item;
 
 class Character

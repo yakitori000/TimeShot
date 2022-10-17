@@ -2,6 +2,7 @@
 #include "character.h"
 #include "Player.h"
 #include "enemy.h"
+#include "enemy2.h"
 #include "Item.h"
 
 
@@ -14,7 +15,7 @@ void Character::Title()
     DrawStringToHandle(730, 800, "ENTER to START", GetColor(255, 255, 255), FontHandle2);
 }
 
-void Character::display(Player& player, Enemy& enemy, Item& item)
+void Character::display(Player& player, Enemy& enemy,  Item& item)
 {
     /*TimeCount = int(TimeCount - GetNowHiPerformanceCount());*/
     FontHandle = CreateFontToHandle(NULL, 40, 9);
@@ -27,17 +28,17 @@ void Character::display(Player& player, Enemy& enemy, Item& item)
     sprintf(buf, "Bullets：%d", player.count);
     DrawString(180, 80, buf, GetColor(255, 255, 255), FontHandle);
 
-    //エネミーライフ表示
+    //エネミーライフ1表示
     sprintf(buf, "ENEMY LIFE：%d", enemy.life1);
-    DrawString(300, 20, buf, GetColor(255, 255, 255), FontHandle);
+    DrawString(400, 20, buf, GetColor(255, 255, 255), FontHandle);
 
-    //エネミーライフ表示
+    //エネミーライフ2表示
     sprintf(buf, "ENEMY LIFE：%d", enemy.life2);
-    DrawString(300, 40, buf, GetColor(255, 255, 255), FontHandle);
+    DrawString(400, 40, buf, GetColor(255, 255, 255), FontHandle);
 
-    //エネミーライフ表示
+    //エネミーライフ3表示
     sprintf(buf, "ENEMY LIFE：%d", enemy.life3);
-    DrawString(300, 60, buf, GetColor(255, 255, 255), FontHandle);
+    DrawString(400, 60, buf, GetColor(255, 255, 255), FontHandle);
 
    /* sprintf(buf, "ENEMY LIFE：%d", enemy.life);
     DrawString(enemy.GetPosX(), enemy.GetPosY(), buf, GetColor(255, 255, 255), FontHandle);*/
@@ -69,11 +70,11 @@ void Character::GameTime(float deltaTime)
     TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
     if (TimeDiff <= 30000000)
     {
-        DrawFormatString(400, 80, GetColor(255, 0, 0), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
+        DrawFormatString(300, 80, GetColor(255, 0, 0), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
     }
     else
     {
-        DrawFormatString(400, 80, GetColor(255, 255, 255), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
+        DrawFormatString(300, 80, GetColor(255, 255, 255), "TIME:%02d'%02d'%d%d", TimeDiff / 60000000, (TimeDiff % 60000000) / 1000000, ((TimeDiff % 60000000) % 1000000) / 100000, (((TimeDiff % 60000000) % 1000000) % 100000) / 10000);
     }
 }
 

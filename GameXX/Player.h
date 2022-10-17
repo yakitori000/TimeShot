@@ -129,8 +129,6 @@ public:
 	/// <param name="headHitFlg">頭の当たり判定結果</param>
 	void SetHeadHitFlag(bool headHitFlag);
 
-	
-
 	/// <summary>
 	/// プレイヤーの足元コライダーのゲット
 	/// </summary>

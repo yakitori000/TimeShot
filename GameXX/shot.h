@@ -13,6 +13,7 @@
 
 class Player;
 class Enemy;
+class Enemy2;
 
 class Shot
 {

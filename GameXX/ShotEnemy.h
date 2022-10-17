@@ -8,6 +8,7 @@
 
 #define ESHOT			100		//エネミーショット最大数
 #define ESHOT_SPEED		20		//通常ショットスピード
+#define ESHOT_INTERVAL	3		//通常ショット発射インターバル
 
 class Player;
 class Enemy;

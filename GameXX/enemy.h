@@ -7,6 +7,9 @@
 #define ENEMY_NUM		5
 #define ENEMY_MAXX		1900
 #define ENEMY_MAXY		600
+#define ENEMY_SPEEED	3
+
+#define ENEMY_SPEEED3	8
 
 class Player;
 class Music;
@@ -25,6 +28,7 @@ private:
 	int		h1;
 	float	vx1, vy1;
 	int		count1;
+
 
 	float	x2;
 	float	y2;
@@ -45,22 +49,18 @@ private:
 
 	int		graph1;										// 通常画像
 	int		damageGraph1;								// ダメージ画像
-	
-	int		graph2;										// 通常画像
-	int		damageGraph2;								// ダメージ画像
-	
-	int		graph3;										// 通常画像
-	int		damageGraph3;								// ダメージ画像
-
 	bool	damageFlag1;								// ダメージ食らってるか
 	int		damageCounter1;								// ダメージ数
 
-	bool	damageFlag2;								// ダメージ食らってるか
-	int		damageCounter2;								// ダメージ数
-
+	int		graph3;										// 通常画像
+	int		damageGraph3;								// ダメージ画像
 	bool	damageFlag3;								// ダメージ食らってるか
 	int		damageCounter3;								// ダメージ数
-	
+
+	int		graph2;										// 通常画像
+	int		damageGraph2;								// ダメージ画像
+	bool	damageFlag2;								// ダメージ食らってるか
+	int		damageCounter2;								// ダメージ数
 
 	bool	LivFlag1;									// 生きているか
 	int		LivCounter1;									// 生存者数
@@ -91,10 +91,10 @@ private:
 	const int		hitSizeX1				= 50;       // 当たり判定サイズ幅
 	const int		hitSizeY1				= 100;       // 当たり判定サイズ高さ
 
-	const int		imageSizeX2				= 64;       // 画像横サイズ
-	const int		imageSizeY2				= 128;      // 画像縦サイズ
-	const int		hitSizeX2				= 50;       // 当たり判定サイズ幅
-	const int		hitSizeY2				= 100;       // 当たり判定サイズ高さ
+	const int		imageSizeX2 = 64;       // 画像横サイズ
+	const int		imageSizeY2 = 128;      // 画像縦サイズ
+	const int		hitSizeX2 = 50;       // 当たり判定サイズ幅
+	const int		hitSizeY2 = 100;       // 当たり判定サイズ高さ
 
 	const int		imageSizeX3				= 64;       // 画像横サイズ
 	const int		imageSizeY3				= 128;      // 画像縦サイズ
@@ -110,14 +110,16 @@ private:
 	const float		jumpInitalVelocity1		= 10.5f;    // ジャンプ初速度
 	const float		jumpUpSpeed1			= 9.0f;     // ジャンプ長押し中上昇速度
 
-	const float		moveSpeed2				= 200.0f;   // 移動速度 (ここで指定した値分のピクセル/秒進む) 
-	const float		maxMoveSpeed2			= 300.0f;   // 最大横移動速度
-	const float		moveAccell2				= 1.5f;     // 移動加速度
-	const float		frictionRatio2			= 0.98f;    // 摩擦係数
-	const float		brakeRatio2				= 0.95f;    // 進行方向に対して入力逆方向に入れたときのブレーキ係数
-	const float		inAirMoveAccelRatio2	= 0.8f;     // 空中横移動加速率
-	const float		jumpInitalVelocity2		= 10.5f;     // ジャンプ初速度
-	const float		jumpUpSpeed2			= 9.0f;     // ジャンプ長押し中上昇速度
+	const float		moveSpeed2 = 200.0f;   // 移動速度 (ここで指定した値分のピクセル/秒進む) 
+	const float		maxMoveSpeed2 = 300.0f;   // 最大横移動速度
+	const float		moveAccell2 = 1.5f;     // 移動加速度
+	const float		frictionRatio2 = 0.98f;    // 摩擦係数
+	const float		brakeRatio2 = 0.95f;    // 進行方向に対して入力逆方向に入れたときのブレーキ係数
+	const float		inAirMoveAccelRatio2 = 0.8f;     // 空中横移動加速率
+	const float		jumpInitalVelocity2 = 10.5f;     // ジャンプ初速度
+	const float		jumpUpSpeed2 = 9.0f;     // ジャンプ長押し中上昇速度
+
+	
 
 	const float		moveSpeed3				= 200.0f;   // 移動速度 (ここで指定した値分のピクセル/秒進む) 
 	const float		maxMoveSpeed3			= 300.0f;   // 最大横移動速度
@@ -133,10 +135,10 @@ private:
 	const float		maxFallSpeed1			= 300.0f;	// 最大落下速度
 	const float		hitHeadBrakeRatio1		= -0.1f;    // 頭上衝突時の減速率
 
-	const int		colliderOffset2			= 10;		// コライダー左右ずらし量
-	const float		gravity2				= 15.0f;	// 重力
-	const float		maxFallSpeed2			= 300.0f;	// 最大落下速度
-	const float		hitHeadBrakeRatio2		= -0.1f;	// 頭上衝突時の減速率
+	const int		colliderOffset2 = 10;		// コライダー左右ずらし量
+	const float		gravity2 = 15.0f;	// 重力
+	const float		maxFallSpeed2 = 300.0f;	// 最大落下速度
+	const float		hitHeadBrakeRatio2 = -0.1f;	// 頭上衝突時の減速率
 
 	const int		colliderOffset3			= 10;		// コライダー左右ずらし量
 	const float		gravity3				= 15.0f;	// 重力
@@ -147,22 +149,20 @@ private:
 	bool  jumpFlag1;									// ジャンプフラグ
 	bool  onGround1;									// 地面に立っているか
 	bool  hitHead1;										// 頭が当たったか
-	bool  hitWool1;										// 壁に当たったか	
 	bool  hitPlayerFlag1;								// プレイヤーに当たったか
 	bool  ShotFlag1;									// 発射しているか
+	bool  ShotCounter;									// 発射タイミング
 	bool  Reverse1;										//反転	
 	
 	bool  jumpFlag2;									// ジャンプフラグ
 	bool  onGround2;									// 地面に立っているか
 	bool  hitHead2;										// 頭が当たったか
-	bool  hitWool2;										// 壁に当たったか
 	bool  hitPlayerFlag2;								// プレイヤーに当たったか
 	bool  Reverse2;										//反転
 
 	bool  jumpFlag3;									// ジャンプフラグ
 	bool  onGround3;									// 地面に立っているか
 	bool  hitHead3;										// 頭が当たったか	
-	bool  hitWool3;										// 壁に当たったか
 	bool  hitPlayerFlag3;								// プレイヤーに当たったか
 	bool  Reverse3;										//反転
 
@@ -316,6 +316,19 @@ public:
 	/// </summary>
 	/// <returns>頭上コライダーの矩形情報</returns>
 	sHitRect GetHeadCollider3();
+
+
+	
+
+	
+
+
+
+
+
+
+
+	
 };
 
 

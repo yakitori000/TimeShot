@@ -68,8 +68,7 @@ void calcFixHitRectPosition(sHitRect& movableRect, const sHitRect& staticRect)
 
 void calcFixHitRectPosition(sHitRect& movableRect, const sHitRect& staticRect, BlockInfo blockinfo)
 {
-	// ブロック情報から壁が存在しないとき、わざと大きな押し戻し量を設定し
-  // 以降の最小値を選ぶ候補から外されるようにする。
+	// ブロック情報から壁が存在しないとき、わざと大きな押し戻し量を設定し以降の最小値を選ぶ候補から外されるようにする。
 	//上下左右の押し戻し距離を計算
 	float left	 = staticRect.worldLX - movableRect.worldRX;
 	float right	 = staticRect.worldRX - movableRect.worldLX;

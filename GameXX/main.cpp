@@ -151,10 +151,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            playerRect = player.getHitRect();
 
            //エネミーの当たり判定短形
-           sHitRect enemyRect;
-           enemyRect = enemy.getHitRect1();
-           enemyRect = enemy.getHitRect2();
-           enemyRect = enemy.getHitRect3();
+           sHitRect enemyRect1;
+           sHitRect enemyRect2;
+           sHitRect enemyRect3;
+
+           enemyRect1 = enemy.getHitRect1();
+           enemyRect2 = enemy.getHitRect2();
+           enemyRect3 = enemy.getHitRect3();
            
 
            // もしぶつかったなら当たり判定ボックスから位置を修正する
@@ -163,39 +166,45 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                player.fixColPosition(playerRect);
            }
 
-           if (map.HitCalc(enemyRect))
+           if (map.HitCalc(enemyRect1))
            {
-              enemy.fixColPosition1(enemyRect);
-              enemy.fixColPosition2(enemyRect);
-              enemy.fixColPosition3(enemyRect);
+              enemy.fixColPosition1(enemyRect1);
            }
-
+           if (map.HitCalc(enemyRect2))
+           {
+               enemy.fixColPosition2(enemyRect2);
+           }
+           if (map.HitCalc(enemyRect2))
+           {
+               enemy.fixColPosition3(enemyRect3);
+           }
+          
            // 足元チェック
            playerRect = player.GetGroundCollider();
            player.SetGroundFlag(map.HitCalc(playerRect));
            
-           enemyRect = enemy.GetGroundCollider1();
-           enemy.SetGroundFlag1(map.HitCalc(enemyRect));
+           enemyRect1 = enemy.GetGroundCollider1();
+           enemy.SetGroundFlag1(map.HitCalc(enemyRect1));
 
-           enemyRect = enemy.GetGroundCollider2();
-           enemy.SetGroundFlag2(map.HitCalc(enemyRect));
+           enemyRect2 = enemy.GetGroundCollider2();
+           enemy.SetGroundFlag2(map.HitCalc(enemyRect2));
 
-           enemyRect = enemy.GetGroundCollider3();
-           enemy.SetGroundFlag3(map.HitCalc(enemyRect));
+           enemyRect3 = enemy.GetGroundCollider3();
+           enemy.SetGroundFlag3(map.HitCalc(enemyRect3));
            
 
            // 頭上チェック
            playerRect = player.GetHeadCollider();
            player.SetHeadHitFlag(map.HitCalc(playerRect));
            
-           enemyRect = enemy.GetHeadCollider1();
-           enemy.SetHeadHitFlag1(map.HitCalc(enemyRect));
+           enemyRect1 = enemy.GetHeadCollider1();
+           enemy.SetHeadHitFlag1(map.HitCalc(enemyRect1));
 
-           enemyRect = enemy.GetHeadCollider2();
-           enemy.SetHeadHitFlag2(map.HitCalc(enemyRect));
+           enemyRect2 = enemy.GetHeadCollider2();
+           enemy.SetHeadHitFlag2(map.HitCalc(enemyRect2));
 
-           enemyRect = enemy.GetHeadCollider3();
-           enemy.SetHeadHitFlag3(map.HitCalc(enemyRect));
+           enemyRect3 = enemy.GetHeadCollider3();
+           enemy.SetHeadHitFlag3(map.HitCalc(enemyRect3));
            
 
            //スクロール更新処理
@@ -222,10 +231,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                Eshot[j].DrawShotEnemy(enemy);
            }
-
            item.Draw();
            player.Draw();
-           
            enemy.Draw1();
            enemy.Draw2();
            enemy.Draw3();

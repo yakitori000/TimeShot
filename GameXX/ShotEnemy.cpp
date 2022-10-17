@@ -40,14 +40,12 @@ void ShotEnemy::UpdateShotEnemy(Player& player, Enemy& enemy)
 		}
 	}
 
-
 	// ’e‚Ì‚ ‚½‚è”»’è
 	// ’e‚ª‘¶Ý‚µ‚Ä‚¢‚éê‡‚Ì‚ÝŽŸ‚Ìˆ—‚É‰f‚é
 	if (EVisibleFlag == true && player.HitPoint > 0)
 	{
 		player.OnHitShot(ex, ey, ew, eh, EVisibleFlag);
 	}
-
 }
 
 void ShotEnemy::DrawShotEnemy(Enemy& enemy)

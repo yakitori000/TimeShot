@@ -150,7 +150,6 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	else
 	{
 		jumpFlag1 = true;
-		
 	}
 
 	//頭上に当たった？
@@ -163,12 +162,12 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	
 	if (isRightMove1 == true)
 	{
-		x1 += 3;
+		x1 += ENEMY_SPEEED;
 		Reverse1 = true;
 	}
 	else
 	{
-		x1 -= 3;	
+		x1 -= ENEMY_SPEEED;
 		Reverse1 = false;
 	}
 	
@@ -208,6 +207,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	{
 		ShotFlag1 = true;
 		music.playEnemyAtack(count1);
+		//弾があるなら
 		if (count1 > 0)
 		{
 			// 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
@@ -216,7 +216,6 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 				// 弾iが画面上にでていない場合はその弾を画面に出す
 				if (shot[i].IsEVisibleFlag() == 0)
 				{
-
 					shot[i].OnShotEnemy(x1, y1, w1, h1);
 					count1 -= 1;
 					// 一つ弾を出したので弾を出すループから抜けます
@@ -226,10 +225,10 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 			}
 		}
 
-		//// インターバル用のカウンターを設定.
-		//ShotIntervalCount1 = SHOT_INTERVAL;
+		// インターバル用のカウンターを設定.
+		ShotIntervalCount1 = ESHOT_INTERVAL;
 	}
-	/*else
+	else
 	{
 		ShotIntervalCount1 = 0;
 	}
@@ -237,7 +236,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	if (ShotIntervalCount1 != 0)
 	{
 		--ShotIntervalCount1;
-	}*/
+	}
 
 
 	// エネミーを描画
@@ -297,12 +296,12 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	// エネミーの座標を移動している方向に移動する
 	if (isRightMove2 == true)
 	{
-		x2 += 6;
+		x2 += ENEMY_SPEEED;
 		Reverse2 = true;
 	}
 	else
 	{
-		x2 -= 6;
+		x2 -= ENEMY_SPEEED;
 		Reverse2 = false;
 	}
 
@@ -395,12 +394,12 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	// エネミーの座標を移動している方向に移動する
 	if (isRightMove3 == true)
 	{
-		x3 += 9;
+		x3 += ENEMY_SPEEED3;
 		Reverse3 = true;
 	}
 	else
 	{
-		x3 -= 9;
+		x3 -= ENEMY_SPEEED3;
 		Reverse3 = false;
 	}
 
@@ -518,6 +517,7 @@ void Enemy::Draw2()
 	}
 }
 
+
 void Enemy::Draw3()
 {
 	//enemy3
@@ -526,8 +526,8 @@ void Enemy::Draw3()
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
 		if (damageFlag3 == true)
 		{
-			DrawGraph(static_cast<int>(x3) + drawOffsetX3,
-				static_cast<int>(y3) + drawOffsetY3, damageGraph3, TRUE);
+			DrawGraph(x3 + drawOffsetX3,
+				y3 + drawOffsetY3, damageGraph3, TRUE);
 		}
 		else if (Reverse3)
 		{
@@ -641,12 +641,6 @@ void Enemy::OnHitShot3(int shotX, int shotY, int shotW, int shotH, bool visibleF
 	}
 }
 
-//void Enemy::setPosition(float x, float y, int num)
-//{
-//	PosX[num] = x;
-//	PosY[num] = y;
-//}
-
 void Enemy::fixColPosition1(sHitRect& hitRect)
 {
 	x1 = hitRect.worldLX;
@@ -710,6 +704,7 @@ sHitRect Enemy::GetGroundCollider2()
 {
 	return enemyFootCollider2;
 }
+
 sHitRect Enemy::GetGroundCollider3()
 {
 	return enemyFootCollider3;
@@ -729,5 +724,6 @@ sHitRect Enemy::GetHeadCollider3()
 {
 	return enemyHeadCollider3;
 }
+
 
 
