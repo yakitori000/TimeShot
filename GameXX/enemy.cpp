@@ -59,8 +59,9 @@ void Enemy::Init1()
 	hitPlayerFlag1 = false;
 	ShotFlag1 = false;
 	
+	
 	LivCounter1 = 0;
-	ShotIntervalCount1 = 0;
+	ShotTimeCount1 = 0;
 	count1 = ESHOT;
 
 	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
@@ -162,12 +163,12 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	
 	if (isRightMove1 == true)
 	{
-		x1 += ENEMY_SPEEED;
+		x1 += ENEMY_SPEED;
 		Reverse1 = true;
 	}
 	else
 	{
-		x1 -= ENEMY_SPEEED;
+		x1 -= ENEMY_SPEED;
 		Reverse1 = false;
 	}
 	
@@ -190,7 +191,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	y1 += vy1;
 	
 
-	// エネミーが画面端からでそうになっていたら画面内の座標に戻してあげ、移動する方向も反転する
+	// エネミーが画面外にでそうなら押し戻す。（移動する方向も反転する）
 	if (x1 > SCREEN_WMAX - w1)
 	{
 		x1 = SCREEN_WMAX - w1;
@@ -210,32 +211,24 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 		//弾があるなら
 		if (count1 > 0)
 		{
-			// 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
-			for (int i = 0; i < ESHOT; i++)
+			if (ShotTimeCount1 % ENEMY_SHOTTIME == 0 && ShotTimeCount1 <= 40)
 			{
-				// 弾iが画面上にでていない場合はその弾を画面に出す
-				if (shot[i].IsEVisibleFlag() == 0)
+				// 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
+				for (int i = 0; i < ESHOT; i++)
 				{
-					shot[i].OnShotEnemy(x1, y1, w1, h1);
-					count1 -= 1;
-					// 一つ弾を出したので弾を出すループから抜けます
-					ShotFlag1 = false;
-					break;
+					// 弾iが画面上にでていない場合はその弾を画面に出す
+					if (shot[i].IsEVisibleFlag() == 0)
+					{
+						shot[i].OnShotEnemy(x1, y1, w1, h1);
+						count1 -= 1;
+						// 一つ弾を出したので弾を出すループから抜けます
+						ShotFlag1 = false;
+						break;
+					}
 				}
 			}
+			++ShotTimeCount1;
 		}
-
-		// インターバル用のカウンターを設定.
-		ShotIntervalCount1 = ESHOT_INTERVAL;
-	}
-	else
-	{
-		ShotIntervalCount1 = 0;
-	}
-
-	if (ShotIntervalCount1 != 0)
-	{
-		--ShotIntervalCount1;
 	}
 
 
@@ -296,12 +289,12 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	// エネミーの座標を移動している方向に移動する
 	if (isRightMove2 == true)
 	{
-		x2 += ENEMY_SPEEED;
+		x2 += ENEMY_SPEED;
 		Reverse2 = true;
 	}
 	else
 	{
-		x2 -= ENEMY_SPEEED;
+		x2 -= ENEMY_SPEED;
 		Reverse2 = false;
 	}
 
@@ -394,15 +387,14 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	// エネミーの座標を移動している方向に移動する
 	if (isRightMove3 == true)
 	{
-		x3 += ENEMY_SPEEED3;
+		x3 += ENEMY_SPEED;
 		Reverse3 = true;
 	}
 	else
 	{
-		x3 -= ENEMY_SPEEED3;
+		x3 -= ENEMY_SPEED;
 		Reverse3 = false;
 	}
-
 
 	if (!jumpFlag3)
 	{

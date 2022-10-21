@@ -1,8 +1,8 @@
 
+#include "DxLib.h"
 #include "character.h"
 #include "Player.h"
 #include "enemy.h"
-#include "enemy2.h"
 #include "Item.h"
 
 

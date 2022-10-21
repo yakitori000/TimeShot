@@ -25,13 +25,13 @@ void ShotEnemy::UpdateShotEnemy(Player& player, Enemy& enemy)
 	{
 		if (enemy.GetReverse1() == true)
 		{
-			ex -= ESHOT_SPEED;
+			ex += ESHOT_SPEED;
 		}
 		if (enemy.GetReverse1() == false)
 		{
 			if (ex >= enemy.GetX1() || ex <= enemy.GetX1())
 			{
-				ex += ESHOT_SPEED;
+				ex -= ESHOT_SPEED;
 			}
 		}
 		if (ex < SCREEN_WMIN - ew || ex > SCREEN_WMAX)
@@ -61,6 +61,7 @@ void ShotEnemy::DrawShotEnemy(Enemy& enemy)
 		{
 			DrawRotaGraph(ex, ey, 1.0f, PI / 1, EGraph, TRUE, TRUE);
 		}
+
 	}
 }
 

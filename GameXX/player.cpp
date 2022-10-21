@@ -5,7 +5,6 @@
 #include "Music.h"
 #include "map.h"
 
-
 const int animPatternNum         = 3;        // アニメーションのパターン数
 const int animTypeNum            = 9;        // アニメーションの種類
 
@@ -326,7 +325,7 @@ bool Player::inputMove(float deltaTime)
         else
         {
             //空中加速度
-            vx += -moveAccell * inAirMoveAccelRatio * deltaTime;
+            vx += -moveAccell /** inAirMoveAccelRatio*/ * deltaTime;
         }
 
         //速度クリップ
@@ -370,7 +369,7 @@ bool Player::inputMove(float deltaTime)
         else
         {
             // 空中加速度
-            vx += +moveAccell * inAirMoveAccelRatio * deltaTime;
+            vx += +moveAccell /** inAirMoveAccelRatio*/ * deltaTime;
         }
 
         // 速度クリップ
@@ -415,6 +414,7 @@ bool Player::inputMove(float deltaTime)
     {
         vx *= frictionRatio;
     }
+
     // 落下速度抑制
     if (vy * deltaTime > maxFallSpeed)
     {

@@ -18,7 +18,6 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     LPSTR lpCmdLine, int nCmdShow)
 {
-
     // DxLib初期化
     SetGraphMode(SCREEN_WMAX, SCREEN_H, 16);
     ChangeWindowMode(TRUE);
@@ -65,7 +64,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     int TimeDiff = 0;
     LONGLONG TimeLimit = GetNowHiPerformanceCount() + 120000000.0f;
-    
 
     GameSituation = TITLE;
 
@@ -131,7 +129,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                enemy.Update1(player, music, Eshot,ESHOT, 1.0f / 60.0f);
                enemy.Update2(player, music, 1.0f / 60.0f);
                enemy.Update3(player, music, 1.0f / 60.0f);
-           
           
            item.Updata(player, music);
            for (int i = 0; i < SHOT; i++)
@@ -143,7 +140,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            }
            for (int j = 0; j < ESHOT; j++)
            {
-               Eshot->UpdateShotEnemy(player, enemy);
+               Eshot[j].UpdateShotEnemy(player, enemy);
            }
 
            // プレイヤーの当たり判定矩形
@@ -158,7 +155,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            enemyRect1 = enemy.getHitRect1();
            enemyRect2 = enemy.getHitRect2();
            enemyRect3 = enemy.getHitRect3();
-           
 
            // もしぶつかったなら当たり判定ボックスから位置を修正する
            if (map.HitCalc(playerRect))
@@ -174,7 +170,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                enemy.fixColPosition2(enemyRect2);
            }
-           if (map.HitCalc(enemyRect2))
+           if (map.HitCalc(enemyRect3))
            {
                enemy.fixColPosition3(enemyRect3);
            }
@@ -205,7 +201,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
            enemyRect3 = enemy.GetHeadCollider3();
            enemy.SetHeadHitFlag3(map.HitCalc(enemyRect3));
-           
 
            //スクロール更新処理
            scroll.Update(playerRect, deltaTime);
@@ -236,7 +231,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            enemy.Draw1();
            enemy.Draw2();
            enemy.Draw3();
-           
            
            //文字、時間表示
            

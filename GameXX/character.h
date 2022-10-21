@@ -1,6 +1,5 @@
 #pragma once
 #include <windows.h>
-#include "DxLib.h"
 #include <time.h>
 
 #pragma warning(disable:4996)

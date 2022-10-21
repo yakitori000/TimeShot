@@ -20,15 +20,6 @@ void updateWorldRect(sHitRect& dstRect, float x, float y)
 	dstRect.worldRY = y + dstRect.h;
 }
 
-//void drawRect(const sHitRect& rect, int scrollOffsetX,int scrollOffsetY)
-//{
-//	DrawBox(static_cast<int>(rect.worldLX)	 - scrollOffsetX,
-//		static_cast<int>(rect.worldLY)		 - scrollOffsetY,
-//		static_cast<int>(rect.worldRX - 1)	 - scrollOffsetX,
-//		static_cast<int>(rect.worldRY - 1)	 - scrollOffsetY,
-//		GetColor(255, 0, 0), FALSE);
-//}
-
 bool isHitRect(const sHitRect& rect1, const sHitRect& rect2)
 {
 	// 二つの矩形の当たり判定の公式より
@@ -103,7 +94,6 @@ void calcFixHitRectPosition(sHitRect& movableRect, const sHitRect& staticRect, B
 	{
 		return;
 	}
-
 
 	//x方向　Y方向の最短押し戻し距離を比較、最短で戻せる方法で戻す
 	if (fabs(dx) < fabs(dy))

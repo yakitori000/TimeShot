@@ -24,9 +24,9 @@ public:
 	const float animationFPS			= 6.0f;		// 秒間 6コマのアニメーション
 	const float moveSpeed				= 200.0f;	// 移動速度 (ここで指定した値分のピクセル/秒進む) 
 	const float maxMoveSpeed			= 300.0f;	// 最大横移動速度
-	const float moveAccell				= 1.5f;		// 移動加速度
-	const float frictionRatio			= 0.98f;	// 摩擦係数
-	const float brakeRatio				= 0.95f;	// 進行方向に対して入力逆方向に入れたときのブレーキ係数
+	const float moveAccell				= 1.0f;		// 移動加速度
+	const float frictionRatio			= 0.5f;		// 摩擦係数
+	const float brakeRatio				= 0.5f;		// 進行方向に対して入力逆方向に入れたときのブレーキ係数
 	const float inAirMoveAccelRatio		= 0.8f;		// 空中横移動加速率
 	const float jumpInitalVelocity		= 5.5f;		// ジャンプ初速度
 	const float jumpUpSpeed				= 9.0f;		// ジャンプ長押し中上昇速度
