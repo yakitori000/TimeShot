@@ -2,9 +2,8 @@
 
 #include "DxLib.h"
 
-
-#define ENEMY_LIFE		10
-#define ENEMY_NUM		5
+#define ENEMY_LIFE		80
+#define ENEMY_NUM		2
 #define ENEMY_MAXX		1900
 #define ENEMY_MAXY		600
 #define ENEMY_SPEED		3
@@ -19,8 +18,6 @@ struct sHitRect;
 class Enemy
 {
 private:
-	/*float x[ENEMY_NUM];
-	float y[ENEMY_NUM];*/
 	float	x1;
 	float	y1;
 	int		w1;
@@ -41,49 +38,50 @@ private:
 	int		h3;
 	float	vx3, vy3;
 	
-	/*int num[ENEMY_NUM];*/
+	//int num[ENEMY_NUM];
+	//float x[ENEMY_NUM];
+	//float y[ENEMY_NUM];
+	//float PosX[ENEMY_NUM] = {};
+	//float PosY[ENEMY_NUM] = {};
 
-	/*float PosX[ENEMY_NUM] = {};
-	float PosY[ENEMY_NUM] = {};*/
+	int		Graph1;										// 通常画像
+	int		DamageGraph1;								// ダメージ画像
+	bool	DamageFlag1;								// ダメージ受けたか
+	int		DamageCounter1;								// ダメージ数
 
-	int		graph1;										// 通常画像
-	int		damageGraph1;								// ダメージ画像
-	bool	damageFlag1;								// ダメージ食らってるか
-	int		damageCounter1;								// ダメージ数
+	int		Graph2;										// 通常画像
+	int		DamageGraph2;								// ダメージ画像
+	bool	DamageFlag2;								// ダメージ受けたか
+	int		DamageCounter2;								// ダメージ数
 
-	int		graph3;										// 通常画像
-	int		damageGraph3;								// ダメージ画像
-	bool	damageFlag3;								// ダメージ食らってるか
-	int		damageCounter3;								// ダメージ数
-
-	int		graph2;										// 通常画像
-	int		damageGraph2;								// ダメージ画像
-	bool	damageFlag2;								// ダメージ食らってるか
-	int		damageCounter2;								// ダメージ数
+	int		Graph3;										// 通常画像
+	int		DamageGraph3;								// ダメージ画像
+	bool	DamageFlag3;								// ダメージ受けたか
+	int		DamageCounter3;								// ダメージ数
 
 	bool	LivFlag1;									// 生きているか
-	int		LivCounter1;									// 生存者数
+	int		LivCounter1;								// 生存者数
 	int		LivGraph1;									// 
 
 	bool	LivFlag2;									// 生きているか
-	int		LivCounter2;									// 生存者数
+	int		LivCounter2;								// 生存者数
 	int		LivGraph2;									// 
 
 	bool	LivFlag3;									// 生きているか
-	int		LivCounter3;									// 生存者数
+	int		LivCounter3;								// 生存者数
 	int		LivGraph3;									// 
 	
-	bool	isRightMove1;								// 画面外にださない
-	int		drawOffsetX1;								// 当たり判定からの横方向ずらし量
-	int		drawOffsetY1;								// 当たり判定からの縦方向ずらし量
+	bool	IsRightMove1;								// 画面外にださない
+	int		DrawOffsetX1;								// 当たり判定からの横方向ずらし量
+	int		DrawOffsetY1;								// 当たり判定からの縦方向ずらし量
 
-	bool	isRightMove2;								// 画面外にださない
-	int		drawOffsetX2;								// 当たり判定からの横方向ずらし量
-	int		drawOffsetY2;								// 当たり判定からの縦方向ずらし量
+	bool	IsRightMove2;								// 画面外にださない
+	int		DrawOffsetX2;								// 当たり判定からの横方向ずらし量
+	int		DrawOffsetY2;								// 当たり判定からの縦方向ずらし量
 
-	bool	isRightMove3;								// 画面外にださない
-	int		drawOffsetX3;								// 当たり判定からの横方向ずらし量
-	int		drawOffsetY3;								// 当たり判定からの縦方向ずらし量
+	bool	IsRightMove3;								// 画面外にださない
+	int		DrawOffsetX3;								// 当たり判定からの横方向ずらし量
+	int		DrawOffsetY3;								// 当たり判定からの縦方向ずらし量
 
 	const int		imageSizeX1				= 64;		// 画像横サイズ
 	const int		imageSizeY1				= 128;		// 画像縦サイズ
@@ -124,7 +122,6 @@ private:
 	bool  hitHead1;										// 頭が当たったか
 	bool  hitPlayerFlag1;								// プレイヤーに当たったか
 	bool  ShotFlag1;									// 発射しているか
-	bool  ShotCounter;									// 発射タイミング
 	bool  Reverse1;										//反転	
 	
 	bool  jumpFlag2;									// ジャンプフラグ
@@ -163,8 +160,6 @@ public:
 	void OnHitShot1(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
 	void OnHitShot2(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
 	void OnHitShot3(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
-	
-	//void setPosition(float x, float y, int num);
 
 	//bool GetPosX()const { return PosX; }
 	//bool GetPosY()const { return PosY; }
@@ -181,127 +176,112 @@ public:
 
 	bool GetReverse1() const { return Reverse1; }
 
-	/// <summary>
-	/// エネミーの当たり判定矩形を返す
-	/// </summary>
-	/// <returns>当たり判定矩形</returns>
+	//<summary>
+	//エネミーの当たり判定矩形を返す
+	//</summary>
+	//<returns>当たり判定矩形</returns>
 	sHitRect getHitRect1();
 
-	/// <summary>
-	/// エネミーの当たり判定矩形を返す
-	/// </summary>
-	/// <returns>当たり判定矩形</returns>
+	//<summary>
+	//エネミーの当たり判定矩形を返す
+	//</summary>
+	//<returns>当たり判定矩形</returns>
 	sHitRect getHitRect2();
 
-	/// <summary>
-	/// エネミーの当たり判定矩形を返す
-	/// </summary>
-	/// <returns>当たり判定矩形</returns>
+	//<summary>
+	//エネミーの当たり判定矩形を返す
+	//</summary>
+	//<returns>当たり判定矩形</returns>
 	sHitRect getHitRect3();
 
-
-	/// <summary>
-	/// 当たり判定矩形から位置を修正する
-	/// </summary>
-	/// <param name="hitRect">当たり判定矩形</param>
+	//<summary>
+	//当たり判定の位置修正
+	//</summary>
+	//<param name="hitRect">当たり判定矩形</param>
 	void fixColPosition1(sHitRect& hitRect);
 
-	/// <summary>
-	/// 当たり判定矩形から位置を修正する
-	/// </summary>
-	/// <param name="hitRect">当たり判定矩形</param>
+	//<summary>
+	//当たり判定の位置修正
+	//</summary>
+	//<param name="hitRect">当たり判定矩形</param>
 	void fixColPosition2(sHitRect& hitRect);
 
-	/// <summary>
-	/// 当たり判定矩形から位置を修正する
-	/// </summary>
-	/// <param name="hitRect">当たり判定矩形</param>
+	//<summary>
+	//当たり判定の位置修正
+	//</summary>
+	//<param name="hitRect">当たり判定矩形</param>
 	void fixColPosition3(sHitRect& hitRect);
 
-	/// <summary>
-	/// 地面に立っているか？
-	/// </summary>
-	/// <param name="groundFlg">足元の当たり判定結果</param>
+	//<summary>
+	//足元当たり判定
+	//</summary>
+	//<param name="groundFlg">足元の当たり判定結果</param>
 	void SetGroundFlag1(bool groundFlag);
 
-	/// <summary>
-	/// 地面に立っているか？
-	/// </summary>
-	/// <param name="groundFlg">足元の当たり判定結果</param>
+	//<summary>
+	//足元当たり判定
+	//</summary>
+	//<param name="groundFlg">足元の当たり判定結果</param>
 	void SetGroundFlag2(bool groundFlag);
 
-	/// <summary>
-	/// 地面に立っているか？
-	/// </summary>
-	/// <param name="groundFlg">足元の当たり判定結果</param>
+	//<summary>
+	//足元当たり判定
+	//</summary>
+	//<param name="groundFlg">足元の当たり判定結果</param>
 	void SetGroundFlag3(bool groundFlag);
 
-	/// <summary>
-	/// 頭を壁にぶつけたか
-	/// </summary>
-	/// <param name="headHitFlg">頭の当たり判定結果</param>
+	//<summary>
+	//頭の当たり判定
+	//</summary>
+	//<param name="headHitFlg">頭の当たり判定結果</param>
 	void SetHeadHitFlag1(bool headHitFlag);
 
-	/// <summary>
-	/// 頭を壁にぶつけたか
-	/// </summary>
-	/// <param name="headHitFlg">頭の当たり判定結果</param>
+	//<summary>
+	//頭の当たり判定
+	//</summary>
+	//<param name="headHitFlg">頭の当たり判定結果</param>
 	void SetHeadHitFlag2(bool headHitFlag);
 
-	/// <summary>
-	/// 頭を壁にぶつけたか
-	/// </summary>
-	/// <param name="headHitFlg">頭の当たり判定結果</param>
+	// <summary>
+	// 頭の当たり判定
+	// </summary>
+	// <param name="headHitFlg">頭の当たり判定結果</param>
 	void SetHeadHitFlag3(bool headHitFlag);
 
-	/// <summary>
-	/// 足元コライダーのゲット
-	/// </summary>
-	/// <returns>足元コライダーの矩形情報</returns>
+	//<summary>
+	//足元コライダー取得
+	//</summary>
+	//<returns>足元コライダーの矩形情報</returns>
 	sHitRect GetGroundCollider1();
 
-	/// <summary>
-	/// 足元コライダーのゲット
-	/// </summary>
-	/// <returns>足元コライダーの矩形情報</returns>
+	//<summary>
+	//足元コライダー取得
+	//</summary>
+	//<returns>足元コライダーの矩形情報</returns>
 	sHitRect GetGroundCollider2();
 
-	/// <summary>
-	/// 足元コライダーのゲット
-	/// </summary>
-	/// <returns>足元コライダーの矩形情報</returns>
+	//<summary>
+	//足元コライダー取得
+	//</summary>
+	//<returns>足元コライダーの矩形情報</returns>
 	sHitRect GetGroundCollider3();
 
-	/// <summary>
-	/// 頭上コライダーのゲット
-	/// </summary>
-	/// <returns>頭上コライダーの矩形情報</returns>
+	//<summary>
+	//頭上コライダー取得
+	//</summary>
+	//<returns>頭上コライダーの矩形情報</returns>
 	sHitRect GetHeadCollider1();
 
-	/// <summary>
-	/// 頭上コライダーのゲット
-	/// </summary>
-	/// <returns>頭上コライダーの矩形情報</returns>
+	//<summary>
+	//頭上コライダー取得
+	//</summary>
+	//<returns>頭上コライダーの矩形情報</returns>
 	sHitRect GetHeadCollider2();
 
-	/// <summary>
-	/// 頭上コライダーのゲット
-	/// </summary>
-	/// <returns>頭上コライダーの矩形情報</returns>
+	//<summary>
+	//頭上コライダー取得
+	//</summary>
+	//<returns>頭上コライダーの矩形情報</returns>
 	sHitRect GetHeadCollider3();
-
-
-	
-
-	
-
-
-
-
-
-
-
 	
 };
-
-

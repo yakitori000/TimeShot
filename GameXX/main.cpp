@@ -124,7 +124,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            //çXêVèàóù 120fpsëzíË
            player.Update(shot, SHOT, item, music, 1.0f / 60.0f);
                
-               enemy.Update1(player, music, Eshot,ESHOT, 1.0f / 60.0f);
+               enemy.Update1(player, music, Eshot, ESHOT, 1.0f / 60.0f);
                enemy.Update2(player, music, 1.0f / 60.0f);
                enemy.Update3(player, music, 1.0f / 60.0f);
           

@@ -4,6 +4,7 @@ class ScreenImage
 {
 public:
 
+	//</sumary>
 	//ゲームタイトル画像
 	int TITLEgraph;
 	int TITLEimageX, TITLEimageY;

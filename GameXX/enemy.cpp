@@ -30,9 +30,9 @@ void Enemy::Init1()
 {
 	// エネミーのグラフィックをメモリにロード＆表示座標を初期化
 	
-	graph1 = LoadGraph("data/image/Zonbi1.png");
-	damageGraph1 = LoadGraph("data/image/Zonbi.png");
-	GraphFilter(damageGraph1, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
+	Graph1 = LoadGraph("data/image/Zonbi1.png");
+	DamageGraph1 = LoadGraph("data/image/Zonbi.png");
+	GraphFilter(DamageGraph1, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 	
 	life1 = ENEMY_LIFE;				//敵1の体力
 
@@ -53,35 +53,32 @@ void Enemy::Init1()
 	initRect(enemyFootCollider1, hitSizeX1 - colliderOffset1, 1);
 	initRect(enemyHeadCollider1, hitSizeX1 - colliderOffset1, 1);
 	
-	// エネミーのグラフィックのサイズを得る
-	GetGraphSize(graph1, &w1, &h1);
+	// エネミーのグラフィックのサイズを取得
+	GetGraphSize(Graph1, &w1, &h1);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	drawOffsetX1 = (hitSizeX1 - imageSizeX1) / 2;
-	drawOffsetY1 = (hitSizeY1 - imageSizeY1);
+	DrawOffsetX1 = (hitSizeX1 - imageSizeX1) / 2;
+	DrawOffsetY1 = (hitSizeY1 - imageSizeY1);
 
 	jumpFlag1 = false;
 	onGround1 = false;
 	hitHead1 = false;
 	Reverse1 = false;
 	hitPlayerFlag1 = false;
+	DamageFlag1 = false;
 	ShotFlag1 = false;
-	
 	
 	LivCounter1 = 0;
 	ShotTimeCount1 = 0;
 	count1 = ESHOT;
-
-	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
-	damageFlag1 = false;	
 }
 
 void Enemy::Init2()
 {
-	graph2 = LoadGraph("data/image/Zonbi2.png");
-	damageGraph2 = LoadGraph("data/image/Zonbi.png");
-	GraphFilter(damageGraph2, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
+	Graph2 = LoadGraph("data/image/Zonbi2.png");
+	DamageGraph2 = LoadGraph("data/image/Zonbi.png");
+	GraphFilter(DamageGraph2, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 
 	life2 = ENEMY_LIFE;				//敵2の体力
 
@@ -102,30 +99,29 @@ void Enemy::Init2()
 	initRect(enemyFootCollider2, hitSizeX2 - colliderOffset2, 1);
 	initRect(enemyHeadCollider2, hitSizeX2 - colliderOffset2, 1);
 
-	// エネミーのグラフィックのサイズを得る
-	GetGraphSize(graph2, &w2, &h2);
+	// エネミーのグラフィックのサイズを取得
+	GetGraphSize(Graph2, &w2, &h2);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	drawOffsetX2 = (hitSizeX2 - imageSizeX2) / 2;
-	drawOffsetY2 = (hitSizeY2 - imageSizeY2);
+	DrawOffsetX2 = (hitSizeX2 - imageSizeX2) / 2;
+	DrawOffsetY2 = (hitSizeY2 - imageSizeY2);
 
 	jumpFlag2 = false;
 	onGround2 = false;
 	hitHead2 = false;
 	Reverse2 = false;
 	hitPlayerFlag2 = false;
+	DamageFlag2 = false;
+	
 	LivCounter2 = 0;
-
-	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
-	damageFlag2 = false;
 }
 
 void Enemy::Init3()
 {
-	graph3 = LoadGraph("data/image/Zonbi3.png");
-	damageGraph3 = LoadGraph("data/image/Zonbi.png");
-	GraphFilter(damageGraph3, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
+	Graph3 = LoadGraph("data/image/Zonbi3.png");
+	DamageGraph3 = LoadGraph("data/image/Zonbi.png");
+	GraphFilter(DamageGraph3, DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 
 	life3 = ENEMY_LIFE;				//敵3の体力
 
@@ -146,23 +142,22 @@ void Enemy::Init3()
 	initRect(enemyFootCollider3, hitSizeX3 - colliderOffset3, 1);
 	initRect(enemyHeadCollider3, hitSizeX3 - colliderOffset3, 1);
 
-	// エネミーのグラフィックのサイズを得る
-	GetGraphSize(graph3, &w3, &h3);
+	// エネミーのグラフィックのサイズを取得
+	GetGraphSize(Graph3, &w3, &h3);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	drawOffsetX3 = (hitSizeX3 - imageSizeX3) / 2;
-	drawOffsetY3 = (hitSizeY3 - imageSizeY3);
+	DrawOffsetX3 = (hitSizeX3 - imageSizeX3) / 2;
+	DrawOffsetY3 = (hitSizeY3 - imageSizeY3);
 
 	jumpFlag3 = false;
 	onGround3 = false;
 	hitHead3 = false;
 	Reverse3 = false;
 	hitPlayerFlag3 = false;
+	DamageFlag3 = false;
+	
 	LivCounter3 = 0;
-
-	// エネミーが顔を歪めているかどうかの変数に『歪めていない』を表すFALSEを代入
-	damageFlag3 = false;
 }
 
 
@@ -188,7 +183,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 
 	// エネミーの座標を移動している方向に移動する
 	
-	if (isRightMove1 == true)
+	if (IsRightMove1 == true)
 	{
 		x1 += ENEMY_SPEED;
 		Reverse1 = true;
@@ -222,55 +217,52 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	if (x1 > SCREEN_WMAX - w1)
 	{
 		x1 = SCREEN_WMAX - w1;
-		isRightMove1 = false;
+		IsRightMove1 = false;
 	}
 	else if (x1 < SCREEN_WMIN)
 	{
 		x1 = SCREEN_WMIN;
 	
-		isRightMove1 = true;
+		IsRightMove1 = true;
 	}
 
-
-	
-	
-	
-	//弾があるなら
-	if (count1 > 0)
+	if (life1 > 0)
 	{
-		ShotTimeCount1++;
-		music.playEnemyAtack(count1);
-		if (ShotTimeCount1 >= ENEMY_SHOTTIME)
+		//弾があるなら
+		if (count1 > 0)
 		{
-			// 画面上にでていない弾があるか、弾の数だけ繰り返えす
-			for (int i = 0; i < ESHOT; i++)
+			ShotTimeCount1++;
+			music.playEnemyAtack(count1);
+			if (ShotTimeCount1 >= ENEMY_SHOTTIME)
 			{
-				// 弾iが画面上にでていない場合はその弾を画面に出す
-				if (shot[i].IsEVisibleFlag() == 0)
+				// 画面上にでていない弾があるか、弾の数だけ繰り返えす
+				for (int i = 0; i < ESHOT; i++)
 				{
-					shot[i].OnShotEnemy(x1, (y1 + 50), w1, h1);
-					count1--;
-					ShotFlag1 = false;
-					ShotTimeCount1 = 0;
-					break;
+					// 弾iが画面上にでていない場合はその弾を画面に出す
+					if (shot[i].IsEVisibleFlag() == 0)
+					{
+						shot[i].OnShotEnemy(x1, (y1 + 50), w1, h1);
+						count1--;
+						ShotFlag1 = false;
+						ShotTimeCount1 = 0;
+						break;
+					}
 				}
 			}
 		}
 	}
-	
-
 
 	// エネミーを描画
 	// ダメージを受けているかどうかで処理を分岐
-	if (damageFlag1 == true)
+	if (DamageFlag1 == true)
 	{
-		damageCounter1++;
+		DamageCounter1++;
 		life1--;
 
-		if (damageCounter1 == 5)
+		if (DamageCounter1 == 5)
 		{
 			//『ダメージをうけていない』を表すFALSEを代入
-			damageFlag1 = false;
+			DamageFlag1 = false;
 		}
 		if (life1 <= 0)
 		{
@@ -315,7 +307,7 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	}
 
 	// エネミーの座標を移動している方向に移動する
-	if (isRightMove2 == true)
+	if (IsRightMove2 == true)
 	{
 		x2 += ENEMY_SPEED;
 		Reverse2 = true;
@@ -349,26 +341,26 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	if (x2 > SCREEN_WMAX - w2)
 	{
 		x2 = SCREEN_WMAX - w2;
-		isRightMove2 = false;
+		IsRightMove2 = false;
 	}
 	else if (x2 < SCREEN_WMIN)
 	{
 		x2 = SCREEN_WMIN;
 
-		isRightMove2 = true;
+		IsRightMove2 = true;
 	}
 
 	// エネミーを描画
 	// ダメージを受けているかどうかで処理を分岐
-	if (damageFlag2 == true)
+	if (DamageFlag2 == true)
 	{
-		damageCounter2++;
+		DamageCounter2++;
 		life2--;
 
-		if (damageCounter2 == 5)
+		if (DamageCounter2 == 5)
 		{
 			//『ダメージをうけていない』を表すFALSEを代入
-			damageFlag2 = false;
+			DamageFlag2 = false;
 		}
 		if (life2 <= 0)
 		{
@@ -413,7 +405,7 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	}
 
 	// エネミーの座標を移動している方向に移動する
-	if (isRightMove3 == true)
+	if (IsRightMove3 == true)
 	{
 		x3 += ENEMY_SPEED;
 		Reverse3 = true;
@@ -445,26 +437,26 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	if (x3 > SCREEN_WMAX - w3)
 	{
 		x3 = SCREEN_WMAX - w3;
-		isRightMove3 = false;
+		IsRightMove3 = false;
 	}
 	else if (x3 < SCREEN_WMIN)
 	{
 		x3 = SCREEN_WMIN;
 
-		isRightMove3 = true;
+		IsRightMove3 = true;
 	}
 
 	// エネミーを描画
 	// ダメージを受けているかどうかで処理を分岐
-	if (damageFlag3 == true)
+	if (DamageFlag3 == true)
 	{
-		damageCounter3++;
+		DamageCounter3++;
 		life3--;
 
-		if (damageCounter3 == 5)
+		if (DamageCounter3 == 5)
 		{
 			//『ダメージをうけていない』を表すFALSEを代入
-			damageFlag3 = false;
+			DamageFlag3 = false;
 		}
 		if (life3 <= 0)
 		{
@@ -495,20 +487,20 @@ void Enemy::Draw1()
 	if (life1 > 0)
 	{
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
-		if (damageFlag1 == true)
+		if (DamageFlag1 == true)
 		{
-			DrawGraph(static_cast<int>(x1) + drawOffsetX1,
-				static_cast<int>(y1) + drawOffsetY1, damageGraph1, TRUE);
+			DrawGraph(static_cast<int>(x1) + DrawOffsetX1,
+				static_cast<int>(y1) + DrawOffsetY1, Graph1, TRUE);
 		}
 		else if (Reverse1)
 		{
-			DrawTurnGraph(static_cast<int>(x1) + drawOffsetX1,
-				static_cast<int>(y1) + drawOffsetY1, graph1, TRUE);
+			DrawTurnGraph(static_cast<int>(x1) + DrawOffsetX1,
+				static_cast<int>(y1) + DrawOffsetY1, Graph2, TRUE);
 		}
 		else
 		{
-			DrawGraph(static_cast<int>(x1) + drawOffsetX1,
-				static_cast<int>(y1) + drawOffsetY1, graph1, TRUE);
+			DrawGraph(static_cast<int>(x1) + DrawOffsetX1,
+				static_cast<int>(y1) + DrawOffsetY1, Graph3, TRUE);
 		}
 	}
 }
@@ -519,20 +511,20 @@ void Enemy::Draw2()
 	if (life2 > 0)
 	{
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
-		if (damageFlag2 == true)
+		if (DamageFlag2 == true)
 		{
-			DrawGraph(static_cast<int>(x2) + drawOffsetX2,
-				static_cast<int>(y2) + drawOffsetY2, damageGraph2, TRUE);
+			DrawGraph(static_cast<int>(x2) + DrawOffsetX2,
+				static_cast<int>(y2) + DrawOffsetY2, DamageGraph2, TRUE);
 		}
 		else if (Reverse2)
 		{
-			DrawTurnGraph(static_cast<int>(x2) + drawOffsetX2,
-				static_cast<int>(y2) + drawOffsetY2, graph2, TRUE);
+			DrawTurnGraph(static_cast<int>(x2) + DrawOffsetX2,
+				static_cast<int>(y2) + DrawOffsetY2, Graph2, TRUE);
 		}
 		else
 		{
-			DrawGraph(static_cast<int>(x2) + drawOffsetX2,
-				static_cast<int>(y2) + drawOffsetY2, graph2, TRUE);
+			DrawGraph(static_cast<int>(x2) + DrawOffsetX2,
+				static_cast<int>(y2) + DrawOffsetY2, Graph2, TRUE);
 		}
 	}
 }
@@ -544,20 +536,20 @@ void Enemy::Draw3()
 	if (life3 > 0)
 	{
 		// ダメージを受けている場合はダメージ時のグラフィックを描画する
-		if (damageFlag3 == true)
+		if (DamageFlag3 == true)
 		{
-			DrawGraph(x3 + drawOffsetX3,
-				y3 + drawOffsetY3, damageGraph3, TRUE);
+			DrawGraph(x3 + DrawOffsetX3,
+				y3 + DrawOffsetY3, DamageGraph3, TRUE);
 		}
 		else if (Reverse3)
 		{
-			DrawTurnGraph(static_cast<int>(x3) + drawOffsetX3,
-				static_cast<int>(y3) + drawOffsetY3, graph3, TRUE);
+			DrawTurnGraph(static_cast<int>(x3) + DrawOffsetX3,
+				static_cast<int>(y3) + DrawOffsetY3, Graph3, TRUE);
 		}
 		else
 		{
-			DrawGraph(static_cast<int>(x3) + drawOffsetX3,
-				static_cast<int>(y3) + drawOffsetY3, graph3, TRUE);
+			DrawGraph(static_cast<int>(x3) + DrawOffsetX3,
+				static_cast<int>(y3) + DrawOffsetY3, Graph3, TRUE);
 		}
 	}
 }
@@ -595,10 +587,10 @@ void Enemy::OnHitShot1(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		visibleFlag = false;
 
 		// エネミーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
-		damageFlag1 = true;
+		DamageFlag1 = true;
 
 		// エネミーの顔を歪めている時間を測るカウンタ変数に０を代入
-		damageCounter1 = 0;
+		DamageCounter1 = 0;
 
 		// ライフ減少＆スコア加算
 		life1 -= 1;
@@ -623,10 +615,10 @@ void Enemy::OnHitShot2(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		visibleFlag = false;
 
 		// エネミーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
-		damageFlag2 = true;
+		DamageFlag2 = true;
 
 		// エネミーの顔を歪めている時間を測るカウンタ変数に０を代入
-		damageCounter2 = 0;
+		DamageCounter2 = 0;
 
 		// ライフ減少＆スコア加算
 		life2 -= 1;
@@ -651,10 +643,10 @@ void Enemy::OnHitShot3(int shotX, int shotY, int shotW, int shotH, bool visibleF
 		visibleFlag = false;
 
 		// エネミーの顔を歪めているかどうかを保持する変数に『歪めている』を表すTRUEを代入
-		damageFlag3 = true;
+		DamageFlag3 = true;
 
 		// エネミーの顔を歪めている時間を測るカウンタ変数に０を代入
-		damageCounter3 = 0;
+		DamageCounter3 = 0;
 
 		// ライフ減少＆スコア加算
 		life3 -= 1;

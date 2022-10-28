@@ -1,5 +1,8 @@
-
+#include "DxLib.h"
+#include "Player.h"
 #include "ShotEnemy.h"
+#include "collision.h"
+#include "function.h"
 
 void ShotEnemy::InitShotEnemy()
 {

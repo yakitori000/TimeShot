@@ -17,7 +17,6 @@ void Character::Title()
 
 void Character::display(Player& player, Enemy& enemy,  Item& item)
 {
-    /*TimeCount = int(TimeCount - GetNowHiPerformanceCount());*/
     FontHandle = CreateFontToHandle(NULL, 40, 9);
     
     //プレイヤーライフ表示

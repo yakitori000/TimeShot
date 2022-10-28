@@ -1,10 +1,6 @@
 #pragma once
 
-#include "DxLib.h"
-#include "Player.h"
 #include "enemy.h"
-#include "collision.h"
-#include "function.h"
 
 #define ESHOT			100		//エネミーショット最大数
 #define ESHOT_SPEED		20		//通常ショットスピード
