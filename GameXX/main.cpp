@@ -115,6 +115,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            deltaTime = (nowCount - prevCount) / 1000.0f;
            TimeDiff = int(TimeLimit - GetNowHiPerformanceCount());
 
+           
            music.playBGM();
 
            if (TimeDiff <= 31000000)

@@ -377,7 +377,7 @@ bool Player::inputMove(float deltaTime)
         {
             vx = +maxMoveSpeed;
         }
-        animNowType = animRight;       
+        animNowType = animRight;
         isMove = true;
 
         //ŽËŒ‚’†

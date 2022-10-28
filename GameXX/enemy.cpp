@@ -38,6 +38,15 @@ void Enemy::Init1()
 
 	x1 = GetRand(ENEMY_MAXX);		//“G1‚ÌXÀ•W
 	y1 = GetRand(ENEMY_MAXY);		//“G1‚ÌYÀ•W
+	
+	if (x1 >= ENEMY_MAXX)
+	{
+		x1 == ENEMY_MAXX;
+	}
+	if (y1 >= ENEMY_MAXY)
+	{
+		y1 == ENEMY_MAXY;
+	}
 
 	// “–‚½‚è”»’è‰Šú‰»@“G‚P
 	initRect(enemyHit1, hitSizeX1, hitSizeY1);
@@ -79,6 +88,15 @@ void Enemy::Init2()
 	x2 = GetRand(ENEMY_MAXX);		//“G2‚ÌXÀ•W
 	y2 = GetRand(ENEMY_MAXY);		//“G2‚ÌYÀ•W
 
+	if (x2 >= ENEMY_MAXX)
+	{
+		x2 == ENEMY_MAXX;
+	}
+	if (y2 >= ENEMY_MAXY)
+	{
+		y2 == ENEMY_MAXY;
+	}
+
 	// “–‚½‚è”»’è‰Šú‰»@“G‚Q
 	initRect(enemyHit2, hitSizeX2, hitSizeY2);
 	initRect(enemyFootCollider2, hitSizeX2 - colliderOffset2, 1);
@@ -112,7 +130,16 @@ void Enemy::Init3()
 	life3 = ENEMY_LIFE;				//“G3‚Ì‘Ì—Í
 
 	x3 = GetRand(ENEMY_MAXX);		//“G3‚ÌXÀ•W
-	y3 = GetRand(ENEMY_MAXY);		//“G3‚ÌYÀ•W	
+	y3 = GetRand(ENEMY_MAXY);		//“G3‚ÌYÀ•W
+
+	if (x3 >= ENEMY_MAXX)
+	{
+		x3 == ENEMY_MAXX;
+	}
+	if (y3 >= ENEMY_MAXY)
+	{
+		y3 == ENEMY_MAXY;
+	}
 
 	// “–‚½‚è”»’è‰Šú‰»@“G‚R
 	initRect(enemyHit3, hitSizeX3, hitSizeY3);
@@ -207,27 +234,27 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	if (!ShotFlag1)
 	{
 		ShotFlag1 = true;
+		ShotTimeCount1++;
 		music.playEnemyAtack(count1);
 		//’e‚ª‚ ‚é‚È‚ç
 		if (count1 > 0)
 		{
-			if (ShotTimeCount1 % ENEMY_SHOTTIME == 0 && ShotTimeCount1 <= 40)
+			// ‰æ–Êã‚É‚Å‚Ä‚¢‚È‚¢’e‚ª‚ ‚é‚©A’e‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ‚Ä’²‚×‚é
+			for (int i = 0; i < ESHOT; i++)
 			{
-				// ‰æ–Êã‚É‚Å‚Ä‚¢‚È‚¢’e‚ª‚ ‚é‚©A’e‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ‚Ä’²‚×‚é
-				for (int i = 0; i < ESHOT; i++)
+				if (ShotTimeCount1 >= 1)
 				{
 					// ’ei‚ª‰æ–Êã‚É‚Å‚Ä‚¢‚È‚¢ê‡‚Í‚»‚Ì’e‚ğ‰æ–Ê‚Éo‚·
 					if (shot[i].IsEVisibleFlag() == 0)
 					{
 						shot[i].OnShotEnemy(x1, y1, w1, h1);
-						count1 -= 1;
-						// ˆê‚Â’e‚ğo‚µ‚½‚Ì‚Å’e‚ğo‚·ƒ‹[ƒv‚©‚ç”²‚¯‚Ü‚·
+						count1--;
 						ShotFlag1 = false;
 						break;
 					}
 				}
+				ShotTimeCount1 = 0;
 			}
-			++ShotTimeCount1;
 		}
 	}
 

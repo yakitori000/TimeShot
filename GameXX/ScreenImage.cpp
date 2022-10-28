@@ -27,6 +27,18 @@ void ScreenImage::DrawMenu()
 	DrawGraph(MENUimageX, MENUimageY, MENUgraph,TRUE);
 }
 
+void ScreenImage::InitBack()
+{
+	BACKgraph = LoadGraph("data/image/back.png");
+	BACKimageX = 0;
+	BACKimageY = 0;
+}
+
+void ScreenImage::DrawBack()
+{
+	DrawGraph(BACKimageX, BACKimageY, BACKgraph, TRUE);
+}
+
 //ƒQ[ƒ€ƒNƒŠƒA‰æ‘œˆ—
 void ScreenImage::InitClear()
 {

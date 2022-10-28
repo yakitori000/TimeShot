@@ -12,6 +12,10 @@ public:
 	int MENUgraph;
 	int MENUimageX, MENUimageY;
 
+	//ゲーム背景
+	int BACKgraph;
+	int BACKimageX, BACKimageY;
+
 	//ゲームクリア画像
 	int CLEARgraph;
 	int CLEARimageX, CLEARimageY;
@@ -27,6 +31,10 @@ public:
 	//操作方法画像関連
 	void InitMenu();
 	void DrawMenu();
+
+	//ゲーム背景画像関連
+	void InitBack();
+	void DrawBack();
 
 	//ゲームクリア画像関連
 	void InitClear();
