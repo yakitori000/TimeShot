@@ -231,32 +231,33 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 		isRightMove1 = true;
 	}
 
-	if (!ShotFlag1)
+
+	
+	
+	
+	//弾があるなら
+	if (count1 > 0)
 	{
-		ShotFlag1 = true;
 		ShotTimeCount1++;
 		music.playEnemyAtack(count1);
-		//弾があるなら
-		if (count1 > 0)
+		if (ShotTimeCount1 >= ENEMY_SHOTTIME)
 		{
-			// 画面上にでていない弾があるか、弾の数だけ繰り返して調べる
+			// 画面上にでていない弾があるか、弾の数だけ繰り返えす
 			for (int i = 0; i < ESHOT; i++)
 			{
-				if (ShotTimeCount1 >= 1)
+				// 弾iが画面上にでていない場合はその弾を画面に出す
+				if (shot[i].IsEVisibleFlag() == 0)
 				{
-					// 弾iが画面上にでていない場合はその弾を画面に出す
-					if (shot[i].IsEVisibleFlag() == 0)
-					{
-						shot[i].OnShotEnemy(x1, y1, w1, h1);
-						count1--;
-						ShotFlag1 = false;
-						break;
-					}
+					shot[i].OnShotEnemy(x1, (y1 + 50), w1, h1);
+					count1--;
+					ShotFlag1 = false;
+					ShotTimeCount1 = 0;
+					break;
 				}
-				ShotTimeCount1 = 0;
 			}
 		}
 	}
+	
 
 
 	// エネミーを描画

@@ -1,26 +1,48 @@
 #include "DxLib.h"
 #include "ScreenImage.h"
 
-
-//ゲームタイトル画像処理
-void ScreenImage::InitTitle()
+void ScreenImage::Init()
 {
 	TITLEgraph = LoadGraph("data/image/title2.png");
 	TITLEimageX = 0;
 	TITLEimageY = 0;
+
+	MENUgraph = LoadGraph("data/image/KeyMenu1.png");
+	MENUimageX = 0;
+	MENUimageY = 0;
+
+	BACKgraph = LoadGraph("data/image/back.png");
+	BACKimageX = 0;
+	BACKimageY = 0;
+
+	CLEARgraph = LoadGraph("data/image/win.png");
+	CLEARimageX = 0;
+	CLEARimageY = 0;
+
+	OVERgraph = LoadGraph("data/image/lose.png");
+	OVERimageX = 0;
+	OVERimageY = 0;
 }
+
+//ゲームタイトル画像処理
+//void ScreenImage::InitTitle()
+//{
+//	TITLEgraph = LoadGraph("data/image/title2.png");
+//	TITLEimageX = 0;
+//	TITLEimageY = 0;
+//}
 
 void ScreenImage::DrawTitle()
 {
 	DrawGraph(TITLEimageX, TITLEimageY, TITLEgraph, TRUE);
 }
 
-void ScreenImage::InitMenu()
-{
-	MENUgraph = LoadGraph("data/image/KeyMenu1.png");
-	MENUimageX = 0;
-	MENUimageY = 0;
-}
+//void ScreenImage::InitMenu()
+//{
+//	MENUgraph = LoadGraph("data/image/KeyMenu1.png");
+//	MENUimageX = 0;
+//	MENUimageY = 0;
+//}
 
 void ScreenImage::DrawMenu()
 {
@@ -40,13 +62,12 @@ void ScreenImage::DrawBack()
 }
 
 //ゲームクリア画像処理
-void ScreenImage::InitClear()
-{
-	
-	CLEARgraph = LoadGraph("data/image/win.png");
-	CLEARimageX = 0;
-	CLEARimageY = 0;
-}
+//void ScreenImage::InitClear()
+//{
+//	CLEARgraph = LoadGraph("data/image/win.png");
+//	CLEARimageX = 0;
+//	CLEARimageY = 0;
+//}
 
 void ScreenImage::DrawClear()
 {
@@ -55,12 +76,12 @@ void ScreenImage::DrawClear()
 
 
 //ゲームオーバー画像処理
-void ScreenImage::InitOver()
-{
-	OVERgraph = LoadGraph("data/image/lose.png");
-	OVERimageX = 0;
-	OVERimageY = 0;
-}
+//void ScreenImage::InitOver()
+//{
+//	OVERgraph = LoadGraph("data/image/lose.png");
+//	OVERimageX = 0;
+//	OVERimageY = 0;
+//}
 
 void ScreenImage::DrawOver()
 {

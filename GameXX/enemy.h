@@ -8,7 +8,7 @@
 #define ENEMY_MAXX		1900
 #define ENEMY_MAXY		600
 #define ENEMY_SPEED		3
-#define ENEMY_SHOTTIME  10
+#define ENEMY_SHOTTIME  60
 
 class Player;
 class Music;

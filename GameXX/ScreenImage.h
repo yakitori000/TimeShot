@@ -24,12 +24,15 @@ public:
 	int OVERgraph;
 	int OVERimageX, OVERimageY;
 
+	//初期化
+	void Init();
+
 	//ゲームタイトル画像関連
-	void InitTitle();
+	//void InitTitle();
 	void DrawTitle();
 
 	//操作方法画像関連
-	void InitMenu();
+	//void InitMenu();
 	void DrawMenu();
 
 	//ゲーム背景画像関連
@@ -37,11 +40,11 @@ public:
 	void DrawBack();
 
 	//ゲームクリア画像関連
-	void InitClear();
+	//void InitClear();
 	void DrawClear();
 
 	//ゲームオーバー画像関連
-	void InitOver();
+	//void InitOver();
 	void DrawOver();
 
 };

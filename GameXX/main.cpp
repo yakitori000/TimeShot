@@ -39,10 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     Music music;
 
     // èâä˙âª
-    image.InitTitle();
-    image.InitMenu();
-    image.InitClear();
-    image.InitOver();
+    image.Init();
     music.Init();
     player.Init();
     character.Init();
