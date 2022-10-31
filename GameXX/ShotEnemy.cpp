@@ -26,13 +26,13 @@ void ShotEnemy::UpdateShotEnemy(Player& player, Enemy& enemy)
 	//ƒGƒlƒ~[’e‚ÌˆÚ“®ƒ‹[ƒ`ƒ“
 	if (EVisibleFlag == true)
 	{
-		if (enemy.GetReverse1() == true)
+		if (enemy.GetReverse() == true)
 		{
 			ex += ESHOT_SPEED;
 		}
-		if (enemy.GetReverse1() == false)
+		if (enemy.GetReverse() == false)
 		{
-			if (ex >= enemy.GetX1() || ex <= enemy.GetX1())
+			if (ex >= enemy.GetX() || ex <= enemy.GetX())
 			{
 				ex -= ESHOT_SPEED;
 			}
@@ -56,7 +56,7 @@ void ShotEnemy::DrawShotEnemy(Enemy& enemy)
 	if (EVisibleFlag == true)
 	{
 		//’e‚Ì•`‰æ‚ð‚·‚é
-		if (enemy.GetReverse1() == true)
+		if (enemy.GetReverse() == true)
 		{
 			DrawRotaGraph(ex, ey, 1.0f, PI / 1, EGraph, TRUE, FALSE);
 		}

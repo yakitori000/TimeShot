@@ -28,7 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     }
 
     Player player{ };
-    Enemy enemy{ };
+    Enemy enemy{};
     Shot shot[SHOT]{ };
     ShotEnemy Eshot[ESHOT]{ };
     sMapLayer map;
@@ -44,10 +44,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     player.Init();
     character.Init();
     
-    enemy.Init1();
+   /* for (int i = 0; i < ENEMY_NUM; i++)
+    {
+        enemy[i].Init();
+    }*/
+    enemy.Init();
+   /* enemy.Init1();
     enemy.Init2();
     enemy.Init3();
-    
+    */
     map.Init();
     item.Init(music);
     for (int i = 0; i < SHOT; i++)
@@ -123,22 +128,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             
            //更新処理 120fps想定
            player.Update(shot, SHOT, item, music, 1.0f / 60.0f);
-               
-               enemy.Update1(player, music, Eshot, ESHOT, 1.0f / 60.0f);
+           /*for (int i = 0; i < ENEMY_NUM; i++)
+           {
+               enemy[i].Update(player, music, Eshot, ESHOT, 1.0f / 60.0f);
+           }*/
+               enemy.Update(player, music, Eshot, ESHOT, 1.0f / 60.0f);
+               /*enemy.Update1(player, music, Eshot, ESHOT, 1.0f / 60.0f);
                enemy.Update2(player, music, 1.0f / 60.0f);
-               enemy.Update3(player, music, 1.0f / 60.0f);
+               enemy.Update3(player, music, 1.0f / 60.0f);*/
           
            item.Updata(player, music);
            for (int i = 0; i < SHOT; i++)
            {
               // music.playShot(player.count);
                
-                   shot[i].Update(player, enemy);
+               shot[i].Update(player, enemy);
                
+              
            }
            for (int j = 0; j < ESHOT; j++)
            {
-               Eshot[j].UpdateShotEnemy(player, enemy);
+                Eshot[j].UpdateShotEnemy(player, enemy);
            }
 
            // プレイヤーの当たり判定矩形
@@ -146,13 +156,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            playerRect = player.getHitRect();
 
            //エネミーの当たり判定短形
-           sHitRect enemyRect1;
-           sHitRect enemyRect2;
-           sHitRect enemyRect3;
 
-           enemyRect1 = enemy.getHitRect1();
+           sHitRect enemyRect[ENEMY_NUM];
+          /* sHitRect enemyRect1;
+           sHitRect enemyRect2;
+           sHitRect enemyRect3;*/
+           
+           for (int i = 0; i < ENEMY_NUM; i++)
+           {
+               enemyRect[i] = enemy.getHitRect();
+           }
+          /*enemyRect1 = enemy.getHitRect1();
            enemyRect2 = enemy.getHitRect2();
-           enemyRect3 = enemy.getHitRect3();
+           enemyRect3 = enemy.getHitRect3();*/
 
            // もしぶつかったなら当たり判定ボックスから位置を修正する
            if (map.HitCalc(playerRect))
@@ -160,7 +176,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                player.fixColPosition(playerRect);
            }
 
-           if (map.HitCalc(enemyRect1))
+           
+           for (int i = 0; i < ENEMY_NUM; i++)
+           {
+               if (map.HitCalc(enemyRect[i]))
+               {
+                   enemy.fixColPosition(enemyRect[i]);
+               }
+           }
+  
+           /*if (map.HitCalc(enemyRect1))
            {
               enemy.fixColPosition1(enemyRect1);
            }
@@ -171,34 +196,46 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            if (map.HitCalc(enemyRect3))
            {
                enemy.fixColPosition3(enemyRect3);
-           }
+           }*/
           
            // 足元チェック
            playerRect = player.GetGroundCollider();
            player.SetGroundFlag(map.HitCalc(playerRect));
            
-           enemyRect1 = enemy.GetGroundCollider1();
+           for (int i = 0; i < ENEMY_NUM; i++)
+           {
+               enemyRect[i] = enemy.GetGroundCollider();
+               enemy.SetGroundFlag(map.HitCalc(enemyRect[i]));
+           }
+
+           /*enemyRect1 = enemy.GetGroundCollider1();
            enemy.SetGroundFlag1(map.HitCalc(enemyRect1));
 
            enemyRect2 = enemy.GetGroundCollider2();
            enemy.SetGroundFlag2(map.HitCalc(enemyRect2));
 
            enemyRect3 = enemy.GetGroundCollider3();
-           enemy.SetGroundFlag3(map.HitCalc(enemyRect3));
+           enemy.SetGroundFlag3(map.HitCalc(enemyRect3));*/
            
 
            // 頭上チェック
            playerRect = player.GetHeadCollider();
            player.SetHeadHitFlag(map.HitCalc(playerRect));
+
+           for (int i = 0; i < ENEMY_NUM; i++)
+           {
+               enemyRect[i] = enemy.GetHeadCollider();
+               enemy.SetHeadHitFlag(map.HitCalc(enemyRect[i]));
+           }
            
-           enemyRect1 = enemy.GetHeadCollider1();
+          /* enemyRect1 = enemy.GetHeadCollider1();
            enemy.SetHeadHitFlag1(map.HitCalc(enemyRect1));
 
            enemyRect2 = enemy.GetHeadCollider2();
            enemy.SetHeadHitFlag2(map.HitCalc(enemyRect2));
 
            enemyRect3 = enemy.GetHeadCollider3();
-           enemy.SetHeadHitFlag3(map.HitCalc(enemyRect3));
+           enemy.SetHeadHitFlag3(map.HitCalc(enemyRect3));*/
 
            //スクロール更新処理
            scroll.Update(playerRect, deltaTime);
@@ -226,23 +263,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            }
            item.Draw();
            player.Draw();
-           enemy.Draw1();
+           
+           enemy.Draw();
+           
+           /*enemy.Draw1();
            enemy.Draw2();
-           enemy.Draw3();
+           enemy.Draw3();*/
            enemy.DrawHP(enemy.life1, ENEMY_LIFE);
+           
           
            //文字、時間表示
-           
-               character.display(player, enemy, item); 
-               character.GameTime(1.0f / 60.0f);
+            character.display(player, enemy, item);
+            character.GameTime(1.0f / 60.0f);
            
              //ゲームクリア条件
-            if (enemy.life1 <= 0 && enemy.life2 <= 0 && enemy.life3 <= 0)
-            {
-                StopSoundMem(music.GameMusic);
-                StopSoundMem(music.GameImpatientMusic);
-                GameSituation = CLEAR;
-            }
+           if (enemy.GetLife() <= 0)
+           {
+               StopSoundMem(music.GameMusic);
+               StopSoundMem(music.GameImpatientMusic);
+               GameSituation = CLEAR;
+           }
+           
+            
             
             //ゲームオーバー条件
             if (player.GetHitPoint() <= 0 || TimeDiff <= 02000000)

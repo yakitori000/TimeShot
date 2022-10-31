@@ -46,7 +46,11 @@ void Shot::Update(Player& player, Enemy& enemy)
 
 		// ’e‚Ì‚ ‚½‚è”»’è
 		// ’e‚ª‘¶Ý‚µ‚Ä‚¢‚éê‡‚Ì‚ÝŽŸ‚Ìˆ—‚É‰f‚é
-		if (visibleFlag == true && enemy.GetLife1() > 0)
+	if (visibleFlag == true && enemy.GetLife() > 0)
+	{
+		enemy.OnHitShot(x, y, w, h, visibleFlag);
+	}
+		/*if (visibleFlag == true && enemy.GetLife1() > 0)
 		{
 			enemy.OnHitShot1(x, y, w, h, visibleFlag);
 		}
@@ -59,7 +63,7 @@ void Shot::Update(Player& player, Enemy& enemy)
 		if (visibleFlag == true && enemy.GetLife3() > 0)
 		{
 			enemy.OnHitShot3(x, y, w, h, visibleFlag);
-		}
+		}*/
 }
 
 //•`‰æ
