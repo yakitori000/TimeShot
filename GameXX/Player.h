@@ -25,7 +25,7 @@ public:
 	const float moveSpeed				= 200.0f;	// 移動速度 (ここで指定した値分のピクセル/秒進む) 
 	const float maxMoveSpeed			= 300.0f;	// 最大横移動速度
 	const float moveAccell				= 1.0f;		// 移動加速度
-	const float frictionRatio			= 0.5f;		// 摩擦係数
+	const float frictionRatio			= 0.9f;		// 摩擦係数
 	const float brakeRatio				= 0.5f;		// 進行方向に対して入力逆方向に入れたときのブレーキ係数
 	const float inAirMoveAccelRatio		= 0.8f;		// 空中横移動加速率
 	const float jumpInitalVelocity		= 5.5f;		// ジャンプ初速度
@@ -79,20 +79,20 @@ public:
 	/// </summary>
 	void Init();
 
-	/// <summary>
-	/// プレイヤー更新
-	/// </summary>
-	/// <param name="deltaTime">1フレーム分の処理時間</param>
+	//<summary>
+	//プレイヤー更新
+	//</summary>
+	//<param name="deltaTime">1フレーム分の処理時間</param>
 	void Update( Shot shot[], int shotnum, Item &item,Music &music, float deltaTime);
 
-	/// <summary>
-	/// プレイヤー描画
-	/// </summary>
+	//<summary>
+	//プレイヤー描画
+	//</summary>
 	void Draw();
 
-	/// <summary>
-	/// プレイヤー被弾
-	/// </summary>
+	//<summary>
+	//プレイヤー被弾
+	//</summary>
 	void OnHitShot(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
 
 	/// <summary>

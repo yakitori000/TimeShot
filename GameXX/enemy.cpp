@@ -36,6 +36,8 @@ void Enemy::Init1()
 	
 	life1 = ENEMY_LIFE;				//敵1の体力
 
+
+
 	x1 = GetRand(ENEMY_MAXX);		//敵1のX座標
 	y1 = GetRand(ENEMY_MAXY);		//敵1のY座標
 	
@@ -49,25 +51,25 @@ void Enemy::Init1()
 	}
 
 	// 当たり判定初期化　敵１
-	initRect(enemyHit1, hitSizeX1, hitSizeY1);
-	initRect(enemyFootCollider1, hitSizeX1 - colliderOffset1, 1);
-	initRect(enemyHeadCollider1, hitSizeX1 - colliderOffset1, 1);
+	initRect(enemyHit1, hitSizeX, hitSizeY);
+	initRect(enemyFootCollider1, hitSizeX - colliderOffset, 1);
+	initRect(enemyHeadCollider1, hitSizeX - colliderOffset, 1);
 	
 	// エネミーのグラフィックのサイズを取得
 	GetGraphSize(Graph1, &w1, &h1);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	DrawOffsetX1 = (hitSizeX1 - imageSizeX1) / 2;
-	DrawOffsetY1 = (hitSizeY1 - imageSizeY1);
+	DrawOffsetX1 = (hitSizeX - imageSizeX) / 2;
+	DrawOffsetY1 = (hitSizeY - imageSizeY);
 
-	jumpFlag1 = false;
-	onGround1 = false;
-	hitHead1 = false;
-	Reverse1 = false;
-	hitPlayerFlag1 = false;
-	DamageFlag1 = false;
-	ShotFlag1 = false;
+	jumpFlag1		= false;
+	onGround1		= false;
+	hitHead1		= false;
+	Reverse1		= false;
+	hitPlayerFlag1  = false;
+	DamageFlag1		= false;
+	ShotFlag1		= false;
 	
 	LivCounter1 = 0;
 	ShotTimeCount1 = 0;
@@ -95,24 +97,24 @@ void Enemy::Init2()
 	}
 
 	// 当たり判定初期化　敵２
-	initRect(enemyHit2, hitSizeX2, hitSizeY2);
-	initRect(enemyFootCollider2, hitSizeX2 - colliderOffset2, 1);
-	initRect(enemyHeadCollider2, hitSizeX2 - colliderOffset2, 1);
+	initRect(enemyHit2, hitSizeX, hitSizeY);
+	initRect(enemyFootCollider2, hitSizeX - colliderOffset, 1);
+	initRect(enemyHeadCollider2, hitSizeX - colliderOffset, 1);
 
 	// エネミーのグラフィックのサイズを取得
 	GetGraphSize(Graph2, &w2, &h2);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	DrawOffsetX2 = (hitSizeX2 - imageSizeX2) / 2;
-	DrawOffsetY2 = (hitSizeY2 - imageSizeY2);
+	DrawOffsetX2 = (hitSizeX - imageSizeX) / 2;
+	DrawOffsetY2 = (hitSizeY - imageSizeY);
 
-	jumpFlag2 = false;
-	onGround2 = false;
-	hitHead2 = false;
-	Reverse2 = false;
-	hitPlayerFlag2 = false;
-	DamageFlag2 = false;
+	jumpFlag2		= false;
+	onGround2		= false;
+	hitHead2		= false;
+	Reverse2		= false;
+	hitPlayerFlag2  = false;
+	DamageFlag2		= false;
 	
 	LivCounter2 = 0;
 }
@@ -138,24 +140,24 @@ void Enemy::Init3()
 	}
 
 	// 当たり判定初期化　敵３
-	initRect(enemyHit3, hitSizeX3, hitSizeY3);
-	initRect(enemyFootCollider3, hitSizeX3 - colliderOffset3, 1);
-	initRect(enemyHeadCollider3, hitSizeX3 - colliderOffset3, 1);
+	initRect(enemyHit3, hitSizeX, hitSizeY);
+	initRect(enemyFootCollider3, hitSizeX - colliderOffset, 1);
+	initRect(enemyHeadCollider3, hitSizeX - colliderOffset, 1);
 
 	// エネミーのグラフィックのサイズを取得
 	GetGraphSize(Graph3, &w3, &h3);
 
 	// 描画位置のオフセット値を計算
    // 左右から見てセンター、上下方向は底辺基準となるように計算
-	DrawOffsetX3 = (hitSizeX3 - imageSizeX3) / 2;
-	DrawOffsetY3 = (hitSizeY3 - imageSizeY3);
+	DrawOffsetX3 = (hitSizeX - imageSizeX) / 2;
+	DrawOffsetY3 = (hitSizeY - imageSizeY);
 
-	jumpFlag3 = false;
-	onGround3 = false;
-	hitHead3 = false;
-	Reverse3 = false;
-	hitPlayerFlag3 = false;
-	DamageFlag3 = false;
+	jumpFlag3		 = false;
+	onGround3		 = false;
+	hitHead3		 = false;
+	Reverse3		 = false;
+	hitPlayerFlag3   = false;
+	DamageFlag3		 = false;
 	
 	LivCounter3 = 0;
 }
@@ -178,7 +180,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	//頭上に当たった？
 	if (hitHead1)
 	{
-		vy1 = hitHeadBrakeRatio1 * vy1;
+		vy1 = hitHeadBrakeRatio * vy1;
 	}
 
 	// エネミーの座標を移動している方向に移動する
@@ -196,7 +198,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	
 	if (!jumpFlag1)
 	{
-		vy1 -= jumpInitalVelocity1;
+		vy1 -= jumpInitalVelocity	;
 		jumpFlag1 = true;
 		onGround1 = false;
 	}
@@ -204,7 +206,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	// ジャンプ中なら重力を発生
 	if (jumpFlag1)
 	{
-		vy1 += gravity1 * deltaTime;
+		vy1 += gravity * deltaTime;
 	}
 
 	// 位置更新
@@ -242,7 +244,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 					if (shot[i].IsEVisibleFlag() == 0)
 					{
 						shot[i].OnShotEnemy(x1, (y1 + 50), w1, h1);
-						count1--;
+						count1 --;
 						ShotFlag1 = false;
 						ShotTimeCount1 = 0;
 						break;
@@ -257,7 +259,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	if (DamageFlag1 == true)
 	{
 		DamageCounter1++;
-		life1--;
+		life1 --;
 
 		if (DamageCounter1 == 5)
 		{
@@ -266,7 +268,7 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 		}
 		if (life1 <= 0)
 		{
-			LivCounter1--;
+			LivCounter1 --;
 		}
 	}
 
@@ -281,8 +283,8 @@ void Enemy::Update1(Player player, Music music, ShotEnemy shot[], int shotnum, f
 	
 	// 当たり判定位置更新
 	updateWorldRect(enemyHit1, x1, y1);
-	updateWorldRect(enemyFootCollider1, x1 + colliderOffset1 / 2, y1 + enemyHit1.h);
-	updateWorldRect(enemyHeadCollider1, x1 + colliderOffset1 / 2, y1 + enemyHeadCollider1.h);
+	updateWorldRect(enemyFootCollider1, x1 + colliderOffset / 2, y1 + enemyHit1.h);
+	updateWorldRect(enemyHeadCollider1, x1 + colliderOffset / 2, y1 + enemyHeadCollider1.h);
 	
 }
 
@@ -303,7 +305,7 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	//頭上に当たった？
 	if (hitHead2)
 	{
-		vy2 = hitHeadBrakeRatio2 * vy2;
+		vy2 = hitHeadBrakeRatio * vy2;
 	}
 
 	// エネミーの座標を移動している方向に移動する
@@ -321,7 +323,7 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 
 	if (!jumpFlag2)
 	{
-		vy2 -= jumpInitalVelocity2;
+		vy2 -= jumpInitalVelocity	;
 		jumpFlag2 = true;
 		onGround2 = false;
 	}
@@ -329,7 +331,7 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 	// ジャンプ中なら重力を発生
 	if (jumpFlag2)
 	{
-		vy2 += gravity2 * deltaTime;
+		vy2 += gravity * deltaTime;
 	}
 
 	// 位置更新
@@ -379,8 +381,8 @@ void Enemy::Update2(Player player, Music music, float deltaTime)
 
 	// 当たり判定位置更新
 	updateWorldRect(enemyHit2, x2, y2);
-	updateWorldRect(enemyFootCollider2, x2 + colliderOffset2 / 2, y2 + enemyHit2.h);
-	updateWorldRect(enemyHeadCollider2, x2 + colliderOffset2 / 2, y2 + enemyHeadCollider2.h);
+	updateWorldRect(enemyFootCollider2, x2 + colliderOffset / 2, y2 + enemyHit2.h);
+	updateWorldRect(enemyHeadCollider2, x2 + colliderOffset / 2, y2 + enemyHeadCollider2.h);
 
 }
 
@@ -401,7 +403,7 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	//頭上に当たった？
 	if (hitHead3)
 	{
-		vy3 = hitHeadBrakeRatio3 * vy3;
+		vy3 = hitHeadBrakeRatio * vy3;
 	}
 
 	// エネミーの座標を移動している方向に移動する
@@ -418,7 +420,7 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 
 	if (!jumpFlag3)
 	{
-		vy3 -= jumpInitalVelocity3;
+		vy3 -= jumpInitalVelocity	;
 		jumpFlag3 = true;
 		onGround3 = false;
 	}
@@ -426,7 +428,7 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 	// ジャンプ中なら重力を発生
 	if (jumpFlag3)
 	{
-		vy3 += gravity3 * deltaTime;
+		vy3 += gravity * deltaTime;
 	}
 
 	// 位置更新
@@ -475,8 +477,8 @@ void Enemy::Update3(Player player, Music music, float deltaTime)
 
 	// 当たり判定位置更新
 	updateWorldRect(enemyHit3, x3, y3);
-	updateWorldRect(enemyFootCollider3, x3 + colliderOffset3 / 2, y3 + enemyHit3.h);
-	updateWorldRect(enemyHeadCollider3, x3 + colliderOffset3 / 2, y3 + enemyHeadCollider3.h);
+	updateWorldRect(enemyFootCollider3, x3 + colliderOffset / 2, y3 + enemyHit3.h);
+	updateWorldRect(enemyHeadCollider3, x3 + colliderOffset / 2, y3 + enemyHeadCollider3.h);
 
 }
 
@@ -553,6 +555,20 @@ void Enemy::Draw3()
 		}
 	}
 }
+
+void Enemy::DrawHP(int life, int MAXlife)
+{
+	if (life1 > 0)
+	{
+		const int FlameColor = GetColor(255, 100, 100);
+		const int Color = GetColor(220, 220, 220);
+		DrawBox( x1 + 0, y1 - 45, x1 + 99,y1 - 30, FlameColor, FALSE);
+		DrawBox( x1 + 0, y1 - 44, x1 + 98 * life / MAXlife, y1 - 29, Color, TRUE);
+	}
+}
+
+
+
 
 sHitRect Enemy::getHitRect1()
 {

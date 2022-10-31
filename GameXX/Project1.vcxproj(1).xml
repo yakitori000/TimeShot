@@ -151,33 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="character.cpp" />
     <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
-    <ClCompile Include="Music.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="ScreenImage.cpp" />
-    <ClCompile Include="ScrollManager.cpp" />
-    <ClCompile Include="shot.cpp" />
-    <ClCompile Include="ShotEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h" />
-    <ClInclude Include="GameSituation.h" />
-    <ClInclude Include="Item.h" />
     <ClInclude Include="collision.h" />
-    <ClInclude Include="enemy.h" />
-    <ClInclude Include="function.h" />
     <ClInclude Include="map.h" />
-    <ClInclude Include="Music.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="ScreenImage.h" />
-    <ClInclude Include="ScrollManager.h" />
-    <ClInclude Include="shot.h" />
-    <ClInclude Include="ShotEnemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,7 +3,7 @@
 #include "DxLib.h"
 
 #define ENEMY_LIFE		80
-#define ENEMY_NUM		2
+#define ENEMY_NUM		5
 #define ENEMY_MAXX		1900
 #define ENEMY_MAXY		600
 #define ENEMY_SPEED		3
@@ -82,40 +82,19 @@ private:
 	bool	IsRightMove3;								// 画面外にださない
 	int		DrawOffsetX3;								// 当たり判定からの横方向ずらし量
 	int		DrawOffsetY3;								// 当たり判定からの縦方向ずらし量
-
-	const int		imageSizeX1				= 64;		// 画像横サイズ
-	const int		imageSizeY1				= 128;		// 画像縦サイズ
-	const int		hitSizeX1				= 50;		// 当たり判定サイズ幅
-	const int		hitSizeY1				= 100;		// 当たり判定サイズ高さ
-
-	const int		imageSizeX2				= 64;		// 画像横サイズ
-	const int		imageSizeY2				= 128;		// 画像縦サイズ
-	const int		hitSizeX2				= 50;		// 当たり判定サイズ幅
-	const int		hitSizeY2				= 100;		// 当たり判定サイズ高さ
-
-	const int		imageSizeX3				= 64;		// 画像横サイズ
-	const int		imageSizeY3				= 128;		// 画像縦サイズ
-	const int		hitSizeX3				= 50;		// 当たり判定サイズ幅
-	const int		hitSizeY3				= 100;		// 当たり判定サイズ高さ
-
-	const float		jumpInitalVelocity1		= 10.5f;	// ジャンプ初速度
-	const int		colliderOffset1			= 10;		// コライダー左右ずらし量
-	const float		gravity1				= 15.0f;	// 重力
-	const float		maxFallSpeed1			= 300.0f;	// 最大落下速度
-	const float		hitHeadBrakeRatio1		= -0.1f;	// 頭上衝突時の減速率
 	
-	const float		jumpInitalVelocity2		= 11.0f;	// ジャンプ初速度
-	const int		colliderOffset2			= 10;		// コライダー左右ずらし量
-	const float		gravity2				= 15.0f;	// 重力
-	const float		maxFallSpeed2			= 300.0f;	// 最大落下速度
-	const float		hitHeadBrakeRatio2		= -0.1f;	// 頭上衝突時の減速率
+	const int		imageSizeX	= 64;		// 画像横サイズ
+	const int		imageSizeY	= 128;		// 画像縦サイズ
+	const int		hitSizeX	= 50;		// 当たり判定サイズ幅
+	const int		hitSizeY	= 100;		// 当たり判定サイズ高さ
 
-	const float		jumpInitalVelocity3		= 11.5f;	// ジャンプ初速度
-	const int		colliderOffset3			= 10;		// コライダー左右ずらし量
-	const float		gravity3				= 15.0f;	// 重力
-	const float		maxFallSpeed3			= 300.0f;	// 最大落下速度
-	const float		hitHeadBrakeRatio3		= -0.1f;    // 頭上衝突時の減速率
 
+	
+	const float		jumpInitalVelocity	= 10.5f;	// ジャンプ初速度
+	const int		colliderOffset		= 10;		// コライダー左右ずらし量
+	const float		gravity				= 15.0f;	// 重力
+	const float		maxFallSpeed		= 300.0f;	// 最大落下速度
+	const float		hitHeadBrakeRatio	= -0.1f;	// 頭上衝突時の減速率
 
 	bool  jumpFlag1;									// ジャンプフラグ
 	bool  onGround1;									// 地面に立っているか
@@ -156,6 +135,9 @@ public:
 	void Draw1();
 	void Draw2();
 	void Draw3();
+
+	void DrawHP(int life1, int MAXlife);
+
 	
 	void OnHitShot1(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);
 	void OnHitShot2(int shotX, int shotY, int shotW, int shotH, bool visibleFlag);

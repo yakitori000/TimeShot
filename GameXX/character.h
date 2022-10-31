@@ -25,9 +25,6 @@ private:
     int TimeDiff;
     LONGLONG TimeLimit = GetNowHiPerformanceCount() + 120000000.0f;
 
-    double start, end;
-    double total = 0.0f, set = 0.0f;
-
 public:
 
     /// <summary>

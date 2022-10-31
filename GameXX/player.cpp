@@ -50,9 +50,9 @@ void Player::Init()
     drawOffsetX = (hitSizeX - imageSizeX) / 2;
     drawOffsetY = (hitSizeY - imageSizeY);
 
-    onGround = false;
-    hitHead = false;
-    GetFlag = false;
+    onGround  = false;
+    hitHead   = false;
+    GetFlag   = false;
     jumpTimer = jumpButtonAcceptTime;
 
     isJumpPush = false;

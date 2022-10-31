@@ -229,7 +229,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            enemy.Draw1();
            enemy.Draw2();
            enemy.Draw3();
-           
+           enemy.DrawHP(enemy.life1, ENEMY_LIFE);
+          
            //文字、時間表示
            
                character.display(player, enemy, item); 
@@ -254,7 +255,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             break;
 
             //ゲームクリア処理
-        case CLEAR:                 
+        case CLEAR:
             ClearDrawScreen();
 
             image.DrawClear();
@@ -268,7 +269,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
             break;
 
             //ゲームオーバー処理
-        case OVER:                  
+        case OVER:
             ClearDrawScreen();
 
             image.DrawOver();
