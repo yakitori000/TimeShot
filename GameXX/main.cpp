@@ -156,16 +156,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            playerRect = player.getHitRect();
 
            //エネミーの当たり判定短形
-
            sHitRect enemyRect[ENEMY_NUM];
-          /* sHitRect enemyRect1;
-           sHitRect enemyRect2;
-           sHitRect enemyRect3;*/
-           
            for (int i = 0; i < ENEMY_NUM; i++)
            {
                enemyRect[i] = enemy.getHitRect();
            }
+
+           /* sHitRect enemyRect1;
+           sHitRect enemyRect2;
+           sHitRect enemyRect3;*/
+
           /*enemyRect1 = enemy.getHitRect1();
            enemyRect2 = enemy.getHitRect2();
            enemyRect3 = enemy.getHitRect3();*/
@@ -176,7 +176,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                player.fixColPosition(playerRect);
            }
 
-           
            for (int i = 0; i < ENEMY_NUM; i++)
            {
                if (map.HitCalc(enemyRect[i]))
@@ -197,7 +196,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            {
                enemy.fixColPosition3(enemyRect3);
            }*/
-          
+
            // 足元チェック
            playerRect = player.GetGroundCollider();
            player.SetGroundFlag(map.HitCalc(playerRect));
@@ -216,7 +215,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
            enemyRect3 = enemy.GetGroundCollider3();
            enemy.SetGroundFlag3(map.HitCalc(enemyRect3));*/
-           
 
            // 頭上チェック
            playerRect = player.GetHeadCollider();
@@ -263,15 +261,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
            }
            item.Draw();
            player.Draw();
-           
            enemy.Draw();
-           
+
            /*enemy.Draw1();
            enemy.Draw2();
            enemy.Draw3();*/
+
            enemy.DrawHP(enemy.life1, ENEMY_LIFE);
-           
-          
+
            //文字、時間表示
             character.display(player, enemy, item);
             character.GameTime(1.0f / 60.0f);
@@ -283,9 +280,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                StopSoundMem(music.GameImpatientMusic);
                GameSituation = CLEAR;
            }
-           
-            
-            
+
             //ゲームオーバー条件
             if (player.GetHitPoint() <= 0 || TimeDiff <= 02000000)
             {

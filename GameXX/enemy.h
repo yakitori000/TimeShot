@@ -143,7 +143,7 @@ private:
 
 public:
 
-	int		life[ENEMY_NUM];
+	int		life;
 	int		life1;										// “G‚P‚Ì‘Ì—Í
 	int		life2;										// “G‚Q‚Ì‘Ì—Í
 	int		life3;										// “G‚R‚Ì‘Ì—Í

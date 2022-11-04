@@ -40,7 +40,7 @@ void Enemy::Init()
 		DamageGraph[i] = LoadGraph("data/image/Zonbi.png");
 		GraphFilter(DamageGraph[i], DX_GRAPH_FILTER_HSB, 120, 120, 120, 256);
 
-		life[i] = ENEMY_LIFE;			//敵の体力
+		life = ENEMY_LIFE;			//敵の体力
 
 		x[i] = GetRand(ENEMY_MAXX);		//敵のX座標
 		y[i] = GetRand(ENEMY_MAXY);		//敵のY座標
@@ -72,7 +72,7 @@ void Enemy::Init()
 
 		jumpFlag = false;
 		onGround = false;
-		hitHead	 = false;
+		hitHead = false;
 		Reverse	 = false;
 
 		hitPlayerFlag = false;
@@ -290,7 +290,7 @@ void Enemy::Update(Player player, Music music, ShotEnemy shot[], int shotnum, fl
 			IsRightMove[i] = true;
 		}
 
-		if (life[i] > 0)
+		if (life > 0)
 		{
 			//弾があるなら
 			if (count[i] > 0)
@@ -321,14 +321,14 @@ void Enemy::Update(Player player, Music music, ShotEnemy shot[], int shotnum, fl
 		if (DamageFlag[i] == true)
 		{
 			DamageCounter[i]++;
-			life[i]--;
+			life--;
 
 			if (DamageCounter[i] == 5)
 			{
 				//『ダメージをうけていない』を表すFALSEを代入
 				DamageFlag[i] = false;
 			}
-			if (life[i] <= 0)
+			if (life <= 0)
 			{
 				LivCounter[i]--;
 			}
@@ -361,7 +361,7 @@ void Enemy::Draw()
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
 		//enemy
-		if (life[i] > 0)
+		if (life > 0)
 		{
 			// ダメージを受けている場合はダメージ時のグラフィックを描画する
 			if (DamageFlag[i] == true)
@@ -858,7 +858,7 @@ void Enemy::OnHitShot(int shotX, int shotY, int shotW, int shotH, bool visibleFl
 			DamageCounter[i] = 0;
 
 			// ライフ減少＆スコア加算
-			life[i] -= 1;
+			life -= 1;
 		}
 	}
 	
